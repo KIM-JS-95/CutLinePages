@@ -1,0 +1,23 @@
+
+body {
+    background: #261B23;
+    color: #db3246;
+    height: 100vh;
+}
+
+
+button {
+    background-color: #FF7F38;
+    color: #FFFF;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px 20px;
+    position: relative;
+    left: 600px;
+}
+
+.card {
+    background: #261B23;
+    border: 1px solid #aa0f0f;
+}
+

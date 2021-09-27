@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <title>절취선의 게임 LIFE</title>
+    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>
+
+</head>
+
+<body>
+
+<div class="container-fluid p-5 mt-5 text-center">
+
+    <div class= "form-group form-group-lg col-sm-10"style="font-size: 20px;">
+
+        <div class="container-fluid p-5 mt-5 text-left">
+            <div class="row">
+
+                <div class="col-md-3 col-xl-2"></div>
+                <div class="col-md-6 col-xl-10">
+
+                    <div class="text-center">
+                        <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
+                        <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
+                        <i class="fab fa-steam fa-5x" style="color: white; margin-right: 50px;"></i>
+                        <i class="fas fa-gamepad fa-5x" style="color: gainsboro; margin-right: 50px;"></i>
+                    </div>
+
+                    <div class="mb-5"></div>
+                    <div class="mb-5"></div>
+
+                    <div class="card signup-form border-0">
+                        <div class="card-body">
+
+                            <form>
+                                <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5 text-center">
+                                    <text id="id1" th:text = "${details.title}">title</text>
+                                </h3>
+
+
+                                <div class="form-group" style="font-size: 25px;">
+
+                                    <td th:text = "${details.content}">1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</td>
+                                </div>
+
+                                <div class="mb-5"></div>
+
+                                <hr width =100% color="D30505" size="100px" style="height: 2px; " />
+                                <label style="color: rgb(241, 110, 110); font-size: 30px; font-weight: 500;">Game Download link</label>
+                                <div class="form-group" style="font-size: 25px;">
+                                    <td th:href = "${details.link}"> link </td>
+                                </div>
+
+                            </form>
+
+
+                            <div class="mb-5"></div>
+                            <div class="mb-5"></div>
+
+                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="modify">수정</button>
+                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xl-2"></div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/js/gallary.js"></script>
+<script>
+
+$('#modify').on('click', function() {
+
+var id = document.getElementById("id1").innerText;
+       window.location.href='/gallary/update/'+id;
+});
+</script>
+</html>
+

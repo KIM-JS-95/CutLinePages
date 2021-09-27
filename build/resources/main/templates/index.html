@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+
+    <title>절취선의 게임 LIFE</title>
+    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>
+</head>
+<body>
+
+<div class="container-fluid p-5 mt-5">
+
+
+    <div class="text-light text-center my-5">
+
+        <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
+
+        <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
+
+        <i class="fab fa-steam fa-5x" style="color: white; margin-right: 50px;"></i>
+
+        <i class="fas fa-gamepad fa-5x" style="color: gainsboro; margin-right: 50px;"></i>
+
+
+        <h1 style="margin-top: 50px;" class="display-4 mb-4 text-uppercase">Welcome, <span th:text="${username}" class="text-success">Leo</span> </h1>
+
+
+
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-lg text-uppercase" name="registration" type="Submit" style="background-color: black;
+            position: relative; left: 0px; border-radius: 10px; font-size: 15px; color: white;">Logout</button>
+        </form>
+
+    </div>
+
+    <!-- 관리자 유저 정보 조회 / 글 관리 기능 -->
+    <div class="row mx-5">
+        <div class="col-md-4">
+            <div class="card">
+                <i class="fas fa-users-cog fa-7x mx-auto my-5 text-danger"></i>
+                <div class="card-body text-center">
+                    <h3 class="card-title text-danger mb-4">Administrator</h3>
+
+                    <form action="/admin.html" th:action="@{/home/admin}" method="get">
+                        <button  style="position: absolute; left: 0px; font-size: 15px; border-radius: 10px; background-color: blueviolet; color: white;"
+                                 class="btn btn-md btn-block text-uppercase">Go</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 일반 유저들의 게임 입력 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="fas fa-skull fa-7x mx-auto my-5" style="color: white;"></i>
+                <div class="card-body text-center">
+                    <h3 class="card-title text-success mb-4">게임 신청!</h3>
+
+                    <form action="/user.html" th:action="@{/home/user}" method="get">
+                        <button  style="position: absolute; left: 0px; font-size: 15px; border-radius: 10px; background-color: whitesmoke; "
+                                 class="btn btn-md btn-block text-uppercase">Go</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 게스트 유저들의 게임 조회 가능 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="far fa-meh-rolling-eyes fa-7x mx-auto my-5" style="color: tomato;"></i>
+                <div class="card-body text-center">
+                    <h3 class="card-title text-success mb-4">게임 리스트!</h3>
+
+                    <div class = "form-group">
+                        <form action="/user.html" th:action="@{/home/guest}" method="get">
+                            <button  style="position: absolute; left: 0px; font-size: 15px; border-radius: 10px; background-color: orange;"
+                                     class="btn btn-md btn-block text-uppercase">Go</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 유툽 / 트위치 주소 링크 추가해도 좋을듯 -->
+
+<!-- Javascript of Bootstrap  -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

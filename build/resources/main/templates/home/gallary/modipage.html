@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <title>Title</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <form>
+
+            <div class="form-group">
+                <label>글 번호</label>
+                <div id ="id1">
+                    <text th:text = "${details.id}">1</text>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label>제목</label>
+                <div>
+                    <textarea class="form-control" type="text" id= "title" th:text = "${details.title}"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label> 내용 </label>
+                <div>
+                    <textarea class="form-control" id ="content" th:text = "${details.content}"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label> 유형 </label>
+                <div>
+                    <td th:text = "${details.type}"></td>
+                </div>
+            </div>
+        </form>
+
+        <button type="button" class="btn btn-primary" id="update">수정 완료</button>
+    </div>
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src = "/js/gallary.js"></script>
+</html>
