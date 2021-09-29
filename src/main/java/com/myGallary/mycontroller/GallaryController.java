@@ -41,7 +41,7 @@ public class GallaryController {
                 -> new IllegalArgumentException("error"));
 
         model.addAttribute("details", gallary);
-        return "/home/gallary/modipage";
+        return "home/gallary/modipage";
     }
 
 
@@ -52,7 +52,7 @@ public class GallaryController {
                 -> new IllegalArgumentException("error"));
 
         model.addAttribute("details", gallary);
-        return "/home/gallary/gallarydetail";
+        return "home/gallary/gallarydetail";
     }
 
 
@@ -77,11 +77,6 @@ public class GallaryController {
     }
 
 
-    // 이거뭐임?  이거 왜 있음?  게시글 작성
-//    @GetMapping("/gallary/create")
-//    public String gallarycreate() {
-//        return "/home/gallary/gallarypost";
-//    }
 
 
 }

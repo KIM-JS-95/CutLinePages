@@ -60,7 +60,7 @@ public class MemberController {
 			model.addAttribute("successMessage", "FAIL : " + e.getMessage());
 		}
 
-		return "/auth/login";
+		return "auth/login";
 	}
 
 	/**
@@ -80,12 +80,12 @@ public class MemberController {
 		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
 		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
 
-		return "/index";
+		return "index";
 	}
 
 	@RequestMapping(value = {"/", "/login"}, method = {RequestMethod.GET, RequestMethod.POST})
 	public String login(Model model) {
-		return "/auth/login";
+		return "auth/login";
 	}
 
 
@@ -93,13 +93,13 @@ public class MemberController {
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration(Model model) {
 		model.addAttribute("account", new Account());
-		return "/auth/registration";
+		return "auth/registration";
 	}
 
 	//	관리자 화면
 	@RequestMapping(value = "/home/admin", method = RequestMethod.GET)
 	public String adminHome(Model model) {
-		return "/home/admin";
+		return "home/admin";
 	}
 
 
@@ -107,7 +107,7 @@ public class MemberController {
 	//	게임 입력 화면
 	@RequestMapping(value = "/home/user", method = RequestMethod.GET)
 	public String userHome(Model model) {
-		return "/home/user";
+		return "home/user";
 	}
 
 	@Autowired
@@ -123,6 +123,6 @@ public class MemberController {
 		model.addAttribute("boardList",gallaryDtos);
 		model.addAttribute("pageList",pagelist);
 
-		return "/home/guest";
+		return "home/guest";
 	}
 }
