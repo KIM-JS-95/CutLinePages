@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class CustomErrorControler implements ErrorController {
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
-	private final String DEFAULT_ERROR_PATH = "/error";
+	private final String DEFAULT_ERROR_PATH = "error";
 
 	////////////////////////////////////////////////////////////////////////////////
 	//< public functions

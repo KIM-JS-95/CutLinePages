@@ -43,21 +43,24 @@
 
                             <form>
                                 <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5 text-center">
-                                    <text id="id1" th:text = "${details.title}">title</text>
+                                    <text id="title" th:text = "${details.title}" >title</text>
                                 </h3>
 
+                                글번호
+                                <div id="id1", th:text = "${details.id}">1</div>
 
                                 <div class="form-group" style="font-size: 25px;">
-
-                                    <td th:text = "${details.content}">1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</td>
+                                    <td id="content" th:text = "${details.content}"></td>
                                 </div>
 
+
                                 <div class="mb-5"></div>
+
 
                                 <hr width =100% color="D30505" size="100px" style="height: 2px; " />
                                 <label style="color: rgb(241, 110, 110); font-size: 30px; font-weight: 500;">Game Download link</label>
                                 <div class="form-group" style="font-size: 25px;">
-                                    <td th:href = "${details.link}"> link </td>
+                                    <td th:href = "${details.link}" id="link"> link </td>
                                 </div>
 
                             </form>
@@ -66,7 +69,11 @@
                             <div class="mb-5"></div>
                             <div class="mb-5"></div>
 
-                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="modify">수정</button>
+
+                            <button type="button" class="btn btn-dark"
+                                    style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
+
+
                             <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
 
                         </div>
@@ -86,13 +93,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="/js/gallary.js"></script>
-<script>
 
-$('#modify').on('click', function() {
-
-var id = document.getElementById("id1").innerText;
-       window.location.href='/gallary/update/'+id;
-});
-</script>
 </html>
 

@@ -18,7 +18,7 @@ public class GallaryDto {
 
     private String content;
 
-    private String type;
+    private String link;
 
     private LocalDateTime createDate;
 

@@ -26,6 +26,7 @@ import java.util.List;
 public class MemberController {
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
+
 	@Resource(name = "userServiceImpl")
 	private UserService userService;
 
@@ -35,6 +36,7 @@ public class MemberController {
 		try {
 			//< check the user name already exist or not
 			Account userExists = userService.getUserByUsername(account.getUsername());
+
 			if(userExists != null) {
 				bindingResult.rejectValue("username", "error.user", "There is already a user registered with the user name provided");
 			}
@@ -68,6 +70,9 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
+
+
+		// springb security에서 사용자의 현재 정보를 가져오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Account account = null;
 

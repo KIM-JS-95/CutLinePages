@@ -100,7 +100,7 @@ public class GallaryService {
                 .id(board.getId())
                 .title(board.getTitle())
                 .content(board.getContent())
-                .type(board.getLink())
+                .link(board.getLink())
                 .createDate(board.getCreateDate())
                 .build();
     }
