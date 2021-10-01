@@ -56,7 +56,7 @@ public class Account {
     @CreationTimestamp
     private Date regDate;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))

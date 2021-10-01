@@ -27,7 +27,7 @@ public class Gallary extends TimeEntity {
 
     //private String username;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ACCOUNT_ID")
     private Account account;
 
