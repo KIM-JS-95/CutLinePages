@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/registration", "/h2/**").permitAll()
 
-                .antMatchers("/home/guest").permitAll()
+                .antMatchers("/home","/home/guest").permitAll()
 
                 .antMatchers("/home/**").hasAuthority(ERole.ADMIN.getValue())
 
@@ -83,12 +83,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=true")
                 .successHandler(successHandler())
                 .failureHandler(failureHandler())
+
+                // 로그인 화면에서 username / password 변수 값은 이어 받는다
                 .usernameParameter("username")
                 .passwordParameter("password")
 
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+
+                // @Controller 로그아웃 개별 기능 추가가 가능할까?
+                // .logoutUrl("/logout")
+
                 .logoutSuccessUrl("/login")
                 .and()
                 .exceptionHandling(exception -> exception.accessDeniedPage("/access-denied") );

@@ -53,8 +53,7 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
             //< get the authorities
             Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
             if(roles.contains(ERole.ADMIN.getValue())) {
-
-                redirectStratgy.sendRedirect(request, response, "home/admin");
+                redirectStratgy.sendRedirect(request, response, "home");
             }
             else if(roles.contains(ERole.MANAGER.getValue())) {
                 redirectStratgy.sendRedirect(request, response, "home");

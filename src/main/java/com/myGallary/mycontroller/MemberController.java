@@ -31,9 +31,11 @@ public class MemberController {
 	private UserService userService;
 
 
+	// 닉네임 기능도 추가해 줍시다.
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String createNewUser(Model model, @Valid Account account, BindingResult bindingResult) {
 		try {
+
 			//< check the user name already exist or not
 			Account userExists = userService.getUserByUsername(account.getUsername());
 
@@ -62,7 +64,7 @@ public class MemberController {
 			model.addAttribute("successMessage", "FAIL : " + e.getMessage());
 		}
 
-		return "auth/login";
+		return "auth/registration";
 	}
 
 	/**
@@ -88,11 +90,29 @@ public class MemberController {
 		return "index";
 	}
 
+
 	@RequestMapping(value = {"/", "/login"}, method = {RequestMethod.GET, RequestMethod.POST})
 	public String login(Model model) {
 		return "auth/login";
 	}
 
+
+//	@RequestMapping(value = {"/logout"}, method = {RequestMethod.GET, RequestMethod.POST})
+//	public void logout() {
+//
+//		System.out.println("도착?");
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		Account account = null;
+//
+//		try {
+//			account = userService.getUserByUsername(auth.getName());
+//		} catch (Exception e) {
+//			log.error("[ykson]" + e.getMessage());
+//		}
+//
+//		account.setIsActive(false);
+//
+//	}
 
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -101,12 +121,14 @@ public class MemberController {
 		return "auth/registration";
 	}
 
+
+
+
 	//	관리자 화면
 	@RequestMapping(value = "/home/admin", method = RequestMethod.GET)
 	public String adminHome(Model model) {
 		return "home/admin";
 	}
-
 
 
 	//	게임 입력 화면

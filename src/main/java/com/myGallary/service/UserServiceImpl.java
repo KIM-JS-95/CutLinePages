@@ -6,6 +6,7 @@ import com.myGallary.Repository.RoleRepository;
 import com.myGallary.entity.Account;
 import com.myGallary.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,17 +36,26 @@ public class UserServiceImpl implements UserService {
         return accountRepository.findByUsername(username);
     }
 
+
+//    @Value("${usercode.code}")
+//    public String code;
+
     @Override
     public Account setUser(Account user) throws Exception {
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         //< set the active flag
         user.setIsActive(true);
         //< set the user role
         Role userRole = null;
-        if(user.getUsername().equals("admin")) {
+
+
+        // username -> usercode 로 변경하여 관리해보자
+        // .equals("usercode") 로 변경해도 저장은 admin / user / guest 로 구분되도록
+        if(user.getUsercode().equals("admin")) {
             userRole = roleRepository.findByRole(ERole.ADMIN.getValue());
         }
-        else if(user.getUsername().equals("user")) {
+        else if(user.getUsercode().equals( "user" )) {
             userRole = roleRepository.findByRole(ERole.MANAGER.getValue());
         }
         else {

@@ -5,7 +5,6 @@ package com.myGallary.entity;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,6 +22,14 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+
+    // username -> usercode
+    @Column(nullable = false)
+    @NotBlank
+    //@Length(min = 4)
+    private String usercode;
+
 
     @Column(nullable = false)
     @NotBlank
