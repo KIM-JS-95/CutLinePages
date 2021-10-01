@@ -2,5 +2,12 @@
 /shelf/
 /workspace.xml
 
-/build/resources/main/application.properties
-*.properties
+
+### Gradle ###
+.gradle
+
+build/
+
+
+/src/main/resources/application.properties
+/src/main/resources/data.sql
