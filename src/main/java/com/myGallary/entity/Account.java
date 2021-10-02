@@ -19,17 +19,16 @@ import java.util.Set;
 public class Account {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     // username -> usercode
     @Column(nullable = false)
     @NotBlank
     //@Length(min = 4)
     private String usercode;
-
 
     @Column(nullable = false)
     @NotBlank
@@ -56,7 +55,7 @@ public class Account {
     @CreationTimestamp
     private Date regDate;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))

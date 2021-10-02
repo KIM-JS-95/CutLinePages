@@ -65,8 +65,6 @@ public class GallaryController {
 
         List<Gallary> gallaryDtos = gallaryService.search(title);
 
-        System.out.println(title);
-
         Integer[] pagelist = gallaryService.getSearchList(pageNum, title);
 
 

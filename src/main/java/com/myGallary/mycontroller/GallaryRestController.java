@@ -42,7 +42,7 @@ public class GallaryRestController {
             log.error("[ykson]" + e.getMessage());
         }
 
-        gallary.setAccount(account);
+        gallary.setUsername(account.getUsername());
 
         gallaryService.create(gallary);
 
@@ -53,6 +53,7 @@ public class GallaryRestController {
     @PutMapping("/gallary/update/{id}")
     private void update(@PathVariable("id") Long id,
                         @RequestBody GallaryDto gallary){
+
         gallaryService.update(id, gallary);
     }
 
@@ -62,17 +63,6 @@ public class GallaryRestController {
         gallaryService.delete(id);
     }
 
-    // 게시글 검색
-//    @GetMapping("/gallary/view/{id}")
-//    private void view(@PathVariable Long id){
-//        gallaryService.view(id);
-//    }
-
-    // 게시글 검색
-//    @GetMapping("/gallary/view/?title={title}")
-//    private void view(@PathVariable("title") String title){
-//        gallaryService.search(title);
-//    }
 
 
 

@@ -101,6 +101,7 @@ public class GallaryService {
                 .title(board.getTitle())
                 .content(board.getContent())
                 .link(board.getLink())
+                .username(board.getUsername())
                 .createDate(board.getCreateDate())
                 .build();
     }
@@ -122,6 +123,7 @@ public class GallaryService {
 
        gallarys.setTitle(gallary.getTitle());
        gallarys.setContent(gallary.getContent());
+       gallarys.setLink(gallary.getLink());
 
        gallaryRepository.save(gallarys);
     }

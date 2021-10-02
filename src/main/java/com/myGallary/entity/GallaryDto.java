@@ -3,6 +3,8 @@ package com.myGallary.entity;
 import lombok.*;
 
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 
@@ -19,6 +21,8 @@ public class GallaryDto {
     private String content;
 
     private String link;
+
+    private String username;
 
     private LocalDateTime createDate;
 

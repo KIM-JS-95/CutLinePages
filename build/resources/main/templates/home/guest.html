@@ -57,7 +57,7 @@
 
                                     <td th:text="${product.id}"></td>
                                     <td><a th:href="@{'/gallary/view/' + ${product.id}}" th:text="${product.title}"></a></td>
-<!--                                <td th:text="${product.userid}"></td>-->
+                                    <td th:text="${product.username}"></td>
                                     <td th:text="${product.createDate}"></td>
 
                                 </tr>
@@ -81,7 +81,7 @@
                             <div class="card signup-form border-0">
                                 <h3 style="font-size: 30px;" class="text-white text-uppercase mb-3">원하는 게임이 없으신가요?</h3>
                                 <h3 style="font-size: 20px;" class="text-white text-uppercase mb-3">원하는 게임을 등록해 보세요!</h3>
-                                <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" onclick="location.href='/gallary/create' ">구독자 게임등록</button>
+                                <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" onclick="location.href='/home/user' ">구독자 게임등록</button>
                             </div>
 
                         </div>
