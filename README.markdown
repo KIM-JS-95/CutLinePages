@@ -7,29 +7,20 @@
 ### 5. 검색기능 수정 / user 접속기능 개선
 ### 5. html을 꾸며야 해요 (Admin / 게임신청 / 게임리스트) 개별 🙆
 ### 6. 게임 상세 페이지 완성 시켜야 해요 🙆
-### 7. 게임 다운 링크 안정성 검사 구성할것
+
+### 7. 관리자 페이지 구성만 하면 끝
 
 
 ## TODO
 
-
-```text
-관리자만 들어갈 수 있도록 .antMatchers("Admin")
-admin.html -> 모든 유저의 정보와 겔러리의 데이터를 관리해야함
-
-```
+무준단 배포방식 선정 (Docker / Jenkins / AWS) 
 
 관리자는 로그인하면 관리자 페이지로 바로 이동시키기 **(html에서는 관리자 페이지 이동 버튼 지우기)**
-
-
-1. 게시글 작성자 컬럼 추가
-2. 수정 기능 `link` 변경 안됨 
 
 ## 새로이 알게된 메소드
 ```bash
 1. // springb security에서 사용자의 현재 정보를 가져오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        
-
 ```
+
+nginx는 뭐임?
