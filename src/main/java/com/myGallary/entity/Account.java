@@ -23,10 +23,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    // username -> usercode
     @Column(nullable = false)
     @NotBlank
-    //@Length(min = 4)
     private String usercode;
 
     @Column(nullable = false)
