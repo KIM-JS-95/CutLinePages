@@ -23,26 +23,19 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account` (
-  `id` bigint NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `reg_date` datetime(6) DEFAULT NULL,
+  `reg_date` datetime DEFAULT NULL,
   `username` varchar(255) NOT NULL,
+  `usercode` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `NAME_EMAIL_UNIQUE` (`username`,`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `NAME_EMAIL_UNIQUE` (`username`,`email`),
+  UNIQUE KEY `UK_gex1lmaqpg0ir5g1f5eftyaa1` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `account`
---
-
-LOCK TABLES `account` WRITE;
-/*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'a@w',_binary '','$2a$10$hgQFD3I2.puUU87.aKNAS.hFltCe5AILYwqhtB3.TfJoIQOdS0LWC','2021-09-28 16:02:12.080000','admin');
-/*!40000 ALTER TABLE `account` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gallary`

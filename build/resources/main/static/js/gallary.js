@@ -59,7 +59,6 @@ $('#update').on('click', function(){
     if(confirm("수정하시겠습니까?")==true){
 
       var id=document.getElementById("id1").innerText;
-      alert($('#link').val());
 
     var data={
              title: $('#title').val(),
