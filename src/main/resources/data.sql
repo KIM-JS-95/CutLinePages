@@ -97,17 +97,6 @@ UNLOCK TABLES;
 -- Table structure for table `user_role`
 --
 
-DROP TABLE IF EXISTS `user_role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_role` (
-  `user_id` bigint NOT NULL,
-  `role_id` bigint NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`),
-  KEY `FKt7e7djp752sqn6w22i6ocqy6q` (`role_id`),
-  CONSTRAINT `FKlkhooy5w45r7bji6wv27a0wuq` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`),
-  CONSTRAINT `FKt7e7djp752sqn6w22i6ocqy6q` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
