@@ -23,4 +23,7 @@
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 ```
 
+
+자동 배포 설정
+
 nginx는 뭐임?
