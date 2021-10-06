@@ -1,3 +1,3 @@
 # Default ignored files
 
-src/main/resources/port.properties
+src/main/resources/application.properties
