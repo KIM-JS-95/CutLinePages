@@ -1,8 +1,8 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app/git
+REPOSITORY=/home/ec2-user/CutLinePages
 
-cd $REPOSITORY/springboot-webservice/
+cd $REPOSITORY
 
 echo "> Git Pull"
 
@@ -32,7 +32,7 @@ fi
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls $REPOSITORY/ |grep 'springboot-webservice' | tail -n 1)
+JAR_NAME=$(ls $REPOSITORY/ |grep 'Gallary' | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
