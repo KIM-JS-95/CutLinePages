@@ -1,23 +1,24 @@
-pipeline {
-  agent any
-  stages {
+pipeline { 
+  agent any stages {
     stage('build') {
-      steps {
-        echo 'build clear'
+      steps { 
+        sh './gradlew clean build'
       }
-    }
-
-    stage('upload') {
-      steps {
-        echo 'upload clear'
+    } 
+    
+    stage('upload') { 
+      steps { 
+        sh 'aws s3 cp build/libs/application.war s3://jenkins-deploy-application/application.war --region ap-northeast-2' 
       }
-    }
-
+    } 
+    
     stage('deploy') {
       steps {
-        echo 'deploy clear'
-      }
+        sh 'aws elasticbeanstalk create-application-version --region ap-northeast-2 --application-name SpringbootThymeleaf --version-label ${BUILD_TAG} --source-bundle S3Bucket="jenkins-deploy-application",S3Key="application.war"' 
+        sh 'aws elasticbeanstalk update-environment --region ap-northeast-2 --environment-name springbootthymeleaf-sample --version-label ${BUILD_TAG}' 
+      } 
     }
-
-  }
+    
+  } 
 }
+
