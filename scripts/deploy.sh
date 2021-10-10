@@ -18,7 +18,7 @@ cp ./build/libs/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -f springboot-webservice)
+CURRENT_PID=$(pgrep -f CutLinePages)
 
 echo "$CURRENT_PID"
 
