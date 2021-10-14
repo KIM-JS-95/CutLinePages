@@ -7,15 +7,15 @@ PROJECT_TITLE=Gallary
 
 cd $REPOSITORY/$PROJECTNAME
 
-echo "> Git Pull"
-
-git pull
-
-echo "> 프로젝트 Build 시작"
-
-./gradlew build
-
-echo "> Build 파일 복사"
+#echo "> Git Pull"
+#
+#git pull
+#
+#echo "> 프로젝트 Build 시작"
+#
+#./gradlew build
+#
+#echo "> Build 파일 복사"
 
 cp ./build/libs/*.jar $REPOSITORY/jenkins
 
