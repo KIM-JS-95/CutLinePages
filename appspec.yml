@@ -16,3 +16,8 @@ hooks:
     - location: scripts/deploy.sh    # ApplicationStart 단계에서 해당 파일을 실행해라
       timeout: 120
       runas: ec2-user
+
+      ApplicationStop:
+        - location: scripts/deploy.sh    # ApplicationStart 단계에서 해당 파일을 실행해라
+          timeout: 120
+          runas: ec2-user
