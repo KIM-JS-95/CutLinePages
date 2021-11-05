@@ -9,7 +9,7 @@ cd $REPOSITORY/$PROJECTNAME
 
 echo "> Git Pull"
 
-git pull main
+git pull
 
 echo "> 프로젝트 Build 시작"
 
