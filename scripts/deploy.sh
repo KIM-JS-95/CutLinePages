@@ -3,7 +3,6 @@
 REPOSITORY=/home/ec2-user
 PROJECTNAME=CutLinePages
 
-PROJECT_TITLE= Gallary
 
 cd $REPOSITORY/$PROJECTNAME/
 
