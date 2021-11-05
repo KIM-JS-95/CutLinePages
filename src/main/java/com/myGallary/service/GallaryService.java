@@ -1,6 +1,7 @@
 package com.myGallary.service;
 
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.myGallary.Repository.GallaryRepository;
 import com.myGallary.entity.Gallary;
 import com.myGallary.entity.GallaryDto;
@@ -11,7 +12,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -111,8 +115,24 @@ public class GallaryService {
         return gallaryRepository.findById(index);
     }
 
+
+    // AWS s3 버킷 메소드 call
+    private AmazonS3Client s3Client;
+
     // 게시글 저장
-    public Gallary create(Gallary gallary) {
+    public Gallary create(Gallary gallary, MultipartFile file) throws IOException {
+
+        String originalfileName = file.getOriginalFilename();
+        System.out.println(originalfileName);
+        String path = "C:/Users/JAESEUNG/Documents/" + originalfileName;
+
+        // 파일 생성
+        File dest = new File(path);
+        // 파일 저장
+        file.transferTo(dest);
+
+        gallary.setFilePath(path);
+
        return gallaryRepository.save(gallary);
     }
 

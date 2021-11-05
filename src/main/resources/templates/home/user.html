@@ -45,7 +45,7 @@
                         <div class="card-body">
 
                             <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5">Registration</h3>
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" enctype="multipart/form-data" id="form">
 
                                 <!-- TITLE -->
                                 <div class="form-group">
@@ -58,20 +58,25 @@
                                            style= height:200px; />
                                 </div>
 
+                                <!-- Image upload -->
+                                <div class="form-group">
+                                    <input type="file" name="file" id="file" />
+                                </div>
+
+
                                 <!-- LINK -->
                                 <div class="form-group">
                                     <input  id="link" type="text"  placeholder="LINK" class="form-control signup-text"/>
                                 </div>
 
-                                
+                                <!-- submit button -->
+                                <div class="form-group">
+                                    <button type="submit" style="position: absolute; left: 20px; width:1105px;"
+                                            class="form-control btn btn-warning btn-block text-uppercase" id ="save">registration</button>
+                                </div>
 
                             </form>
 
-                            <!-- submit button -->
-                            <div class="form-group">
-                                <button type="submit" style="position: absolute; left: 20px; width:1105px;"
-                                        class="form-control btn btn-warning btn-block text-uppercase" id ="save">registration</button>
-                            </div>
 
                         </div>
                     </div>

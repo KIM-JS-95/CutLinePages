@@ -5,11 +5,20 @@ $('#save').on('click', function () {
              link: $('#link').val()
          };
 
+         var form =$('#form')[0];
+         var formData = new FormData(form);
+         formData.append('file', $('#file'));
+         formData.append('key', new Blob([JSON.stringify(data)] ,
+         {type: "application/json"
+       }));
+
+
      $.ajax({
          type: 'POST',
          url: '/gallary/create',
-         contentType:'application/json; charset=utf-8',
-         data: JSON.stringify(data)
+         processData: false,
+         contentType:false,
+         data: formData,
      }).done(function(){
       alert('저장 성공');
       window.location.href='/home/guest'

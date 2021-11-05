@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -31,20 +33,22 @@ public class GallaryRestController {
 
     // 게시글 작성
     @PostMapping("/gallary/create")
-    private void create(@RequestBody Gallary gallary){
+    private void create(@RequestPart(value = "key") Gallary gallary,
+                        @RequestPart(value = "file") MultipartFile file) throws IOException {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Account account = null;
 
         try {
+            // search user by name
             account = userService.getUserByUsername(auth.getName());
         } catch (Exception e) {
-            log.error("[ykson]" + e.getMessage());
+            log.error("[CutLine]" + e.getMessage());
         }
 
         gallary.setUsername(account.getUsername());
 
-        gallaryService.create(gallary);
+        gallaryService.create(gallary, file);
 
     }
 

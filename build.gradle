@@ -45,6 +45,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
 
+    // AWS S3
+    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.0.1.RELEASE")
 }
 
 test {
