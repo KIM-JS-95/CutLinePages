@@ -3,9 +3,9 @@
 REPOSITORY=/home/ec2-user
 PROJECTNAME=CutLinePages
 
-PROJECT_TITLE=Gallary
+PROJECT_TITLE= Gallary
 
-cd $REPOSITORY/$PROJECTNAME
+cd $REPOSITORY/$PROJECTNAME/
 
 echo "> Git Pull"
 
