@@ -41,7 +41,13 @@
                     <div class="card signup-form border-0">
                         <div class="card-body">
 
+                            <div style="text-align : center;">
+                                <img th:src="${gallery.imgFullPath}" style="width: 960px; height: 300px;">
+                            </div>
+
                             <form>
+
+
                                 <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5 text-center">
                                     <text id="title" th:text = "${details.title}" >title</text>
                                 </h3>
