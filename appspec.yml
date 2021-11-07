@@ -12,7 +12,12 @@ permissions:
     group: ec2-user
 
 hooks:
-  AfterInstall:
+  Install:
     - location: scripts/deploy.sh    # ApplicationStart 단계에서 해당 파일을 실행해라
+      timeout: 300
+      runas: ec2-user
+
+  AfterInstall:
+    - location: scripts/CodeDeploy.sh
       timeout: 300
       runas: ec2-user
