@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<!-- 게임 후기 등록 게시판 입니다. 관리자만 접근이 가능합니다.-->
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-    <title>절취선의 게임 LIFE</title>
-    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>
-
-</head>
+<div data-include-path="header.html"></div>
+<div data-include-path="side.html"></div>
 
 <body>
 
@@ -22,65 +9,58 @@
 
     <div class= "form-group form-group-lg col-sm-10"style="font-size: 20px;">
 
-        <div class="container-fluid p-5 mt-5 text-left">
+        <div class="container-fluid p-5 mt-5 text-center">
             <div class="row">
 
                 <div class="col-md-3 col-xl-2"></div>
+
                 <div class="col-md-6 col-xl-10">
 
-                    <div class="text-center">
-                        <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
-                        <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
-                        <i class="fab fa-steam fa-5x" style="color: white; margin-right: 50px;"></i>
-                        <i class="fas fa-gamepad fa-5x" style="color: gainsboro; margin-right: 50px;"></i>
-                    </div>
-
-                    <div class="mb-5"></div>
-                    <div class="mb-5"></div>
+                    <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
+                    <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
+                    <i class="fab fa-steam fa-5x" style="color: white; margin-right: 50px;"></i>
+                    <i class="fas fa-gamepad fa-5x" style="color: gainsboro; margin-right: 50px;"></i>
 
                     <div class="card signup-form border-0">
+
                         <div class="card-body">
 
-                            <div style="text-align : center;">
-                                <img th:src="${gallery.imgFullPath}" style="width: 960px; height: 300px;">
-                            </div>
+                            <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5">Registration</h3>
 
-                            <form>
+                            <form class="form-horizontal" enctype="multipart/form-data">
 
+                                <!-- TITLE -->
+                                <div class="form-group">
+                                    <input id="title" type="text" placeholder="TITLE" class="form-control signup-text" autofocus />
+                                </div>
 
-                                <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5 text-center">
-                                    <text id="title" th:text = "${details.title}" >title</text>
-                                </h3>
-
-                                글번호
-                                <div id="id1", th:text = "${details.id}">1</div>
-
-                                <div class="form-group" style="font-size: 25px;">
-                                    <td id="content" th:text = "${details.content}"></td>
+                                <!-- CONTENT name -->
+                                <div class="form-group">
+                                    <input id="content" type="text"  placeholder="CONTENT" class="form-control signup-text"
+                                           style= height:200px; />
                                 </div>
 
 
-                                <div class="mb-5"></div>
-
-
-                                <hr width =100% color="D30505" size="100px" style="height: 2px; " />
-                                <label style="color: rgb(241, 110, 110); font-size: 30px; font-weight: 500;">Game Download link</label>
-                                <div class="form-group" style="font-size: 25px;">
-                                    <td><a th:href="@{${details.link}}" th:text="${details.link}" id="link"></a></td>
+                                <!-- Image upload -->
+                                <div class="form-group">
+                                    <input type="file" name="file" id="file" />
                                 </div>
+
+
+                                <!-- LINK -->
+                                <div class="form-group">
+                                    <input  id="link" type="text"  placeholder="LINK" class="form-control signup-text"/>
+                                </div>
+
+
 
                             </form>
 
-
-                            <div class="mb-5"></div>
-                            <div class="mb-5"></div>
-
-
-                            <button type="button" class="btn btn-dark"
-                                    style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
-
-
-                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
+                            <!-- submit button -->
+                            <div class="form-group">
+                                <button type="submit" style="position: absolute; left: 20px; width:1105px;"
+                                        class="form-control btn btn-warning btn-block text-uppercase" id ="save">registration</button>
+                            </div>
 
                         </div>
                     </div>
@@ -93,12 +73,37 @@
 
     </div>
 </div>
-</body>
 
+
+
+</body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="/js/gallary.js"></script>
+<script src="/js/app.js"></script>
 
+<script>
+
+    window.addEventListener('load', function() {
+        var allElements = document.getElementsByTagName('*');
+        Array.prototype.forEach.call(allElements, function(el) {
+            var includePath = el.dataset.includePath;
+            if (includePath) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        el.outerHTML = this.responseText;
+                    }
+                };
+                xhttp.open('GET', includePath, true);
+                xhttp.send();
+            }
+        });
+    });
+
+</script>
+
+
+</body>
 </html>
-

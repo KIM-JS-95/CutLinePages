@@ -48,7 +48,7 @@ public class GallaryRestController {
 
         gallary.setUsername(account.getUsername());
 
-        gallaryService.create(gallary, file);
+//        gallaryService.create(gallary, file);
 
     }
 

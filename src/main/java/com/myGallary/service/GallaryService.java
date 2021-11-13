@@ -1,7 +1,7 @@
 package com.myGallary.service;
 
-
-import com.amazonaws.services.s3.AmazonS3Client;
+//
+//import com.amazonaws.services.s3.AmazonS3Client;
 import com.myGallary.Repository.GallaryRepository;
 import com.myGallary.entity.Gallary;
 import com.myGallary.entity.GallaryDto;
@@ -117,24 +117,24 @@ public class GallaryService {
 
 
     // AWS s3 버킷 메소드 call
-    private AmazonS3Client s3Client;
+//    private AmazonS3Client s3Client;
 
     // 게시글 저장
-    public Gallary create(Gallary gallary, MultipartFile file) throws IOException {
-
-        String originalfileName = file.getOriginalFilename();
-        System.out.println(originalfileName);
-        String path = "C:/Users/JAESEUNG/Documents/" + originalfileName;
-
-        // 파일 생성
-        File dest = new File(path);
-        // 파일 저장
-        file.transferTo(dest);
-
-        gallary.setFilePath(path);
-
-       return gallaryRepository.save(gallary);
-    }
+//    public Gallary create(Gallary gallary, MultipartFile file) throws IOException {
+//
+//        String originalfileName = file.getOriginalFilename();
+//        System.out.println(originalfileName);
+//        String path = "C:/Users/JAESEUNG/Documents/" + originalfileName;
+//
+//        // 파일 생성
+//        File dest = new File(path);
+//        // 파일 저장
+//        file.transferTo(dest);
+//
+//        gallary.setFilePath(path);
+//
+//       return gallaryRepository.save(gallary);
+//    }
 
     // 수정
     public void update(Long id, GallaryDto gallary) {
