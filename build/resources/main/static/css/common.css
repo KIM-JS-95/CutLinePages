@@ -1,6 +1,6 @@
 
 body {
-    background-image: url(/resources/image/background.png);
+    background-image: url(../image/background.png);
     color: #db3246;
     height: 100vh;
     -webkit-background-size: cover;
