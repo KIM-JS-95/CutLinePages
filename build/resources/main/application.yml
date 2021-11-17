@@ -1,0 +1,6 @@
+cloud:
+  aws:
+    credentials:
+      instanceProfile: true
+      accessKey: AKIA3JVA2CBMCPOHERXX
+      secretKey: 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

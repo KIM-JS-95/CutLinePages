@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-    <title>절취선의 게임 LIFE</title>
-    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>
-
+    <div th:replace="/home/fragment/header.html :: fragment-header"></div>
 </head>
 
+<!-- 사이트 바 -->
+<div th:replace="/home/fragment/side.html :: fragment-nav"></div>
+
 <body>
+
 
 <div class="container-fluid p-5 mt-5 text-center">
 
@@ -41,9 +34,11 @@
                     <div class="card signup-form border-0">
                         <div class="card-body">
 
-                            <div style="text-align : center;">
-                                <img th:src="${gallery.imgFullPath}" style="width: 960px; height: 300px;">
-                            </div>
+
+<!--                            이미지 표현 부분-->
+<!--                            <div style="text-align : center;">-->
+<!--                                <img th:src="${gallery.imgFullPath}" style="width: 960px; height: 300px;">-->
+<!--                            </div>-->
 
                             <form>
 
@@ -76,11 +71,8 @@
                             <div class="mb-5"></div>
 
 
-                            <button type="button" class="btn btn-dark"
-                                    style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
-
-
-                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
+<!--                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>-->
+<!--                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>-->
 
                         </div>
                     </div>
@@ -93,12 +85,10 @@
 
     </div>
 </div>
-</body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="/js/gallary.js"></script>
+<div th:replace="/home/fragment/footer.html :: fragment-footer"></div>
+
+</body>
 
 </html>
 

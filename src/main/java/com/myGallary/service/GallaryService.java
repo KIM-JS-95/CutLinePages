@@ -1,6 +1,7 @@
 package com.myGallary.service;
 
-
+//
+//import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.myGallary.Repository.GallaryRepository;
 import com.myGallary.entity.Gallary;
@@ -97,44 +98,13 @@ public class GallaryService {
     }
 
 
-
-
-    private GallaryDto convertEntityToDto(Gallary board) {
-        return GallaryDto.builder()
-                .id(board.getId())
-                .title(board.getTitle())
-                .content(board.getContent())
-                .link(board.getLink())
-                .username(board.getUsername())
-                .createDate(board.getCreateDate())
-                .build();
-    }
-
     // 겔러리 한가지 데이터 출력
     public Optional<Gallary> findIndex(Long index) {
         return gallaryRepository.findById(index);
     }
 
 
-    // AWS s3 버킷 메소드 call
-    private AmazonS3Client s3Client;
-
-    // 게시글 저장
-    public Gallary create(Gallary gallary, MultipartFile file) throws IOException {
-
-        String originalfileName = file.getOriginalFilename();
-        System.out.println(originalfileName);
-        String path = "C:/Users/JAESEUNG/Documents/" + originalfileName;
-
-        // 파일 생성
-        File dest = new File(path);
-        // 파일 저장
-        file.transferTo(dest);
-
-        gallary.setFilePath(path);
-
-       return gallaryRepository.save(gallary);
-    }
+    /* -------------------------------------------------------   CRUD API ----------------------------------------------------------*/
 
     // 수정
     public void update(Long id, GallaryDto gallary) {
@@ -163,5 +133,40 @@ public class GallaryService {
         return gallaryRepository.findByTitle(title);
     }
 
+
+
+
+    private final S3Uploader s3Uploader;
+
+    // 게시글 저장
+    public Gallary create(Gallary gallary, MultipartFile file) throws IOException {
+
+        String originalfileName = file.getOriginalFilename();
+        System.out.println(originalfileName);
+
+        s3Uploader.upload(file, "static");
+
+//        // 파일 생성
+//        File dest = new File(path);
+//        // 파일 저장
+//        file.transferTo(dest);
+//
+//        gallary.setFilePath(path);
+
+        return gallaryRepository.save(gallary);
+    }
+
+    // TODO: AWS S3 파일 저장 구현
+    private GallaryDto convertEntityToDto(Gallary board) {
+        return GallaryDto.builder()
+                .id(board.getId())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .link(board.getLink())
+                .username(board.getUsername())
+                .createDate(board.getCreateDate())
+                .filePath(board.getFilePath())
+                .build();
+    }
 
 }

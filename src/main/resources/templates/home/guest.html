@@ -1,109 +1,88 @@
-<!-- 게임을 볼수 있는 게시판 입니다. -->
-
-<!-- 문제는 단순 게시판 이라면 수정은 어떻게 하지? -->
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-
-
-    <title>절취선의 게임 LIFE</title>
-    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>
-
+    <div th:replace="/home/fragment/header.html :: fragment-header"></div>
 </head>
-
 
 <body>
 
+<div th:replace="/home/fragment/side.html :: fragment-nav"></div>
+
 <div class="container-fluid p-5 mt-5 text-center text-white">
-    <div class= "form-group form-group-lg col-sm-10"style="font-size: 20px;">
-        <div class="container-fluid p-5 mt-5 text-center">
-            <div class="row">
-                <div class="col-md-3 col-xl-2"></div>
-                <div class="col-md-6 col-xl-10">
 
-                    <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
-                    <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
-                    <i class="fab fa-steam fa-5x" style="color: white; margin-right: 50px;"></i>
-                    <i class="fas fa-gamepad fa-5x" style="color: gainsboro; margin-right: 50px;"></i>
+    <div class="text-light text-center my-5">
+        <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
+        <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
+        <i class="fab fa-steam fa-5x" style="color: black; margin-right: 50px;"></i>
+        <i class="fas fa-gamepad fa-5x" style="color: mediumturquoise; margin-right: 50px;"></i>
 
+    </div>
 
-                    <div class="mb-5"></div>
-                    <div class="mb-5"></div>
+    <div class="row">
 
-                    <div class="card signup-form border-0">
-                        <div class="card-body">
-                            <table class = "table table-striped text-white thead-string"  style="font-size: 20px;">
-                                <thead>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>제목</th>
-                                    <th>닉네임</th>
-                                    <th>시간</th>
-                                </tr>
-                                </thead>
+        <div class="col-md-3 col-xl-1"></div>
 
-                                <tbody id="tbody">
-                                <tr th:each="product : ${boardList}">
-
-                                    <td th:text="${product.id}"></td>
-                                    <td><a th:href="@{'/gallary/view/' + ${product.id}}" th:text="${product.title}"></a></td>
-                                    <td th:text="${product.username}"></td>
-                                    <td th:text="${product.createDate}"></td>
-
-                                </tr>
-                                </tbody>
-                            </table>
+        <div class="col-md-6 col-xl-10">
 
 
-                            <div style="font-size: 20px;" class="mb-5">
+            <div class="card signup-form border-0">
+                <div class="card-body">
+                    <table class="table table-striped text-white thead-string" style="font-size: 20px;">
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>닉네임</th>
+                            <th>시간</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="tbody">
+                        <tr th:each="product : ${boardList}">
+
+                            <td th:text="${product.id}"></td>
+                            <td><a th:href="@{'/gallary/view/' + ${product.id}}" th:text="${product.title}"></a></td>
+                            <td th:text="${product.username}"></td>
+                            <td th:text="${product.createDate}"></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                    <div style="font-size: 20px;" class="mb-5">
                                 <span th:each="pageNum : ${pageList}" th:inline="text">
                                     <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
                                 </span>
 
 
-                                <form action="/gallary/view" class="form-inline" style="position: relative;" method="GET">
-                                    <input type="text" class="form-control" name="title" placeholder="게임 제목">
-                                </form>
-
-                            </div>
-
-
-                            <div class="card signup-form border-0">
-                                <h3 style="font-size: 30px;" class="text-white text-uppercase mb-3">원하는 게임이 없으신가요?</h3>
-                                <h3 style="font-size: 20px;" class="text-white text-uppercase mb-3">원하는 게임을 등록해 보세요!</h3>
-                                <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" onclick="location.href='/home/user' ">구독자 게임등록</button>
-                            </div>
-
-                        </div>
+                        <form action="/gallary/view" class="form-inline" style="position: relative;" method="GET">
+                            <input type="text" class="form-control" name="title" placeholder="게임 제목">
+                        </form>
 
                     </div>
+
+
+                    <div class="card signup-form border-0">
+                        <h3 style="font-size: 30px;" class="text-white text-uppercase mb-3">원하는 게임이 없으신가요?</h3>
+                        <h3 style="font-size: 20px;" class="text-white text-uppercase mb-3">원하는 게임을 등록해 보세요!</h3>
+                        <button type="button" class="btn btn-dark"
+                                style="position:relative; left: 0px; font-size: 15px;"
+                                onclick="location.href='/home/user' ">구독자 게임등록
+                        </button>
+                    </div>
+
                 </div>
+
             </div>
 
-            <div class="col-md-3 col-xl-2"></div>
 
+            <div class="col-md-3 col-xl-1"></div>
         </div>
     </div>
+</div>
+<div th:replace="/home/fragment/footer.html :: fragment-footer"></div>
 
-</div>
-</div>
 </body>
-
-
-<!-- Javascript of Bootstrap  -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>
-
 </html>
