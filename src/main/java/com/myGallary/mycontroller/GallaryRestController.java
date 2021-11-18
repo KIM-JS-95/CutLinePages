@@ -33,8 +33,7 @@ public class GallaryRestController {
 
     // 게시글 작성
     @PostMapping("/gallary/create")
-    private void create(@RequestPart(value = "key") Gallary gallary,
-                        @RequestPart(value = "file") MultipartFile file ) throws IOException {
+    private void create(@RequestPart(value = "key") Gallary gallary) throws IOException {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Account account = null;
@@ -48,8 +47,7 @@ public class GallaryRestController {
 
         gallary.setUsername(account.getUsername());
 
-        System.out.println("file name " + file.getName());
-        gallaryService.create(gallary, file);
+        gallaryService.create(gallary);
 
     }
 

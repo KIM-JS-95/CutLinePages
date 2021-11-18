@@ -33,6 +33,5 @@ public class Gallary extends TimeEntity {
     @NotBlank
     private String username;
 
-    private String filePath;
 
 }

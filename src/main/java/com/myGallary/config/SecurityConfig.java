@@ -59,15 +59,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/registration", "/h2/**").permitAll()
+                .antMatchers("/", "/login", "/registration","/home","/home/guest").permitAll()
 
-                .antMatchers("/home","/home/guest").permitAll()
+                .antMatchers("/home/**").hasAuthority(ERole.ADMIN.getValue()) // admin
 
-                .antMatchers("/home/**").hasAuthority(ERole.ADMIN.getValue())
+                .antMatchers( "/home/**").hasAuthority(ERole.MANAGER.getValue()) // user
 
-                .antMatchers( "/home/**").hasAuthority(ERole.MANAGER.getValue())
-
-                //.antMatchers("/home/guest").hasAuthority(ERole.GUEST.getValue())
+                //.antMatchers("/home/guest").hasAuthority(ERole.GUEST.getValue()) // guest
 
                 .anyRequest().authenticated()
                 .and()

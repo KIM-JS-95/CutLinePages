@@ -7,9 +7,9 @@
 
 <body>
 <div class="container-fluid p-5 mt-5 text-center">
-    <h1 class="display-4 text-light">절취선과 함께하시겠어요?</h1>
+
     <form action="/login.html" th:action="@{/}" method="get">
-        <button class="btn btn-sm btn-success text-uppercase my-4" type="Submit">로그인 하러가기</button>
+        <button style="position: relative; left: 1.5px;" class="btn btn-sm btn-success text-uppercase my-4" type="Submit">로그인 하러가기</button>
     </form>
 
     <div class="row">
@@ -45,9 +45,10 @@
                         <div class="form-group">
                             <input type="text" th:field="*{usercode}" placeholder="User Code" class="form-control signup-text"/>
                         </div>
+
                         <!-- submit button -->
                         <div class="form-group">
-                            <button type="submit" class="btn btn-warning btn-block text-uppercase">sign up</button>
+                            <button type="submit" class="btn btn-warning btn-block text-uppercase" style="position: relative; left: 1.5px;">sign up</button>
                         </div>
 
                         <h4><span class="text-success" th:utext="${successMessage}">User has been registered successfully</span></h4>
