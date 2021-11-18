@@ -96,23 +96,23 @@ public class MemberController {
 		return "auth/login";
 	}
 
+// 로그아웃 api
+	@RequestMapping(value = {"/logout"}, method = {RequestMethod.GET, RequestMethod.POST})
+	public void logout() {
 
-//	@RequestMapping(value = {"/logout"}, method = {RequestMethod.GET, RequestMethod.POST})
-//	public void logout() {
-//
-//		System.out.println("도착?");
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		Account account = null;
-//
-//		try {
-//			account = userService.getUserByUsername(auth.getName());
-//		} catch (Exception e) {
-//			log.error("[ykson]" + e.getMessage());
-//		}
-//
-//		account.setIsActive(false);
-//
-//	}
+		System.out.println("도착?");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Account account = null;
+
+		try {
+			account = userService.getUserByUsername(auth.getName());
+		} catch (Exception e) {
+			log.error("[ykson]" + e.getMessage());
+		}
+
+		account.setIsActive(false);
+
+	}
 
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -120,8 +120,6 @@ public class MemberController {
 		model.addAttribute("account", new Account());
 		return "auth/registration";
 	}
-
-
 
 
 	//	관리자 화면

@@ -26,4 +26,6 @@ public class GallaryDto {
 
     private LocalDateTime createDate;
 
+    // 현재 작업중인 s3 and api
+    private String filePath;
 }
