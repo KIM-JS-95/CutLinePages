@@ -19,8 +19,3 @@ hooks:
 
 
 
-  ApplicationStart:
-    - location: scripts/codedeploy.sh    # ApplicationStart 단계에서 해당 파일을 실행해라
-      timeout: 300
-      runas: ec2-user
-
