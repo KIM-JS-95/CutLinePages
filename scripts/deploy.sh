@@ -3,7 +3,6 @@
 REPOSITORY=/home/ec2-user
 PROJECTNAME=CutLinePages
 
-
 cd $REPOSITORY/$PROJECTNAME/
 
 echo "> Git Pull"
@@ -38,7 +37,9 @@ fi
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls -tr $REPOSITORY/jenkins/ | grep 'Gallary' | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/jenkins/ | grep *.jar | tail -n 1)
+
+chmod +x ./$JAR_NAME
 
 echo "> JAR Name: $JAR_NAME"
 
