@@ -14,6 +14,8 @@ git pull origin master
 
 echo "> 프로젝트 Build 시작"
 
+chmod +x ./gradlew
+
 ./gradlew build
 
 echo "> Build 파일 복사"
