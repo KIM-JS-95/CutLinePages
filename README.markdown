@@ -22,7 +22,7 @@
 
 이미지 게시를 위한 s3 이미지 api 구성
 
-배포 문제 발생 뷰 에러
+배포 문제 발생 뷰 에러 -> @RequestMapping 을 GatMapping 으로 바꾸기 
 
 ## 새로이 알게된메소드
 ```bash

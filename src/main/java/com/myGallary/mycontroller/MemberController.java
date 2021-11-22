@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,7 +71,7 @@ public class MemberController {
 	/**
 	 * Common home
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@GetMapping("/home")
 	public String home(Model model) {
 
 
@@ -115,7 +116,7 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	@GetMapping("/registration")
 	public String registration(Model model) {
 		model.addAttribute("account", new Account());
 		return "auth/registration";
@@ -123,14 +124,14 @@ public class MemberController {
 
 
 	//	관리자 화면
-	@RequestMapping(value = "/home/admin", method = RequestMethod.GET)
+	@GetMapping("/home/admin")
 	public String adminHome(Model model) {
 		return "home/admin";
 	}
 
 
 	//	게임 입력 화면
-	@RequestMapping(value = "/home/user", method = RequestMethod.GET)
+	@GetMapping("/home/user")
 	public String userHome(Model model) {
 		return "home/user";
 	}
@@ -139,7 +140,7 @@ public class MemberController {
 	private GallaryService gallaryService;
 
 	//	게임 리스트 확인 화면
-	@RequestMapping(value = "/home/guest", method = RequestMethod.GET)
+	@GetMapping(value = "/home/guest")
 	public String guestHome(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
 
 		List<GallaryDto> gallaryDtos =  gallaryService.getBoardlist(pageNum);
