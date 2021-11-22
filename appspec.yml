@@ -13,9 +13,12 @@ permissions:
 
 hooks:
   BeforeInstall:
-    - location: scripts/deploy.sh    # ApplicationStart 단계에서 해당 파일을 실행해라
+    - location: scripts/deploy.sh
       timeout: 300
       runas: ec2-user
 
-
+  ApplicationStart:
+    - location: scripts/codedeploy.sh    # ApplicationStart 단계에서 해당 파일을 실행해라
+      timeout: 300
+      runas: ec2-user
 
