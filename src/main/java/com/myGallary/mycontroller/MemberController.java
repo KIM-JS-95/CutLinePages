@@ -74,7 +74,6 @@ public class MemberController {
 	@GetMapping("/home")
 	public String home(Model model) {
 
-
 		// springb security에서 사용자의 현재 정보를 가져오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Account account = null;
@@ -88,7 +87,7 @@ public class MemberController {
 		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
 		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
 
-		return "index";
+		return "index.html";
 	}
 
 
@@ -116,7 +115,7 @@ public class MemberController {
 	}
 
 
-	@GetMapping("/registration")
+	@RequestMapping("/registration")
 	public String registration(Model model) {
 		model.addAttribute("account", new Account());
 		return "auth/registration";
