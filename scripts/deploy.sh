@@ -4,8 +4,6 @@ REPOSITORY=/home/ec2-user
 PROJECTNAME=CutLinePages
 
 cd $REPOSITORY/$PROJECTNAME/
-chmod +x ./gradlew
-
 #echo "> Git Pull"
 #
 #git stash
