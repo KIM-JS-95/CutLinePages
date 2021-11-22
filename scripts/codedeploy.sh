@@ -40,4 +40,4 @@ JAR_NAME=$(ls -tr $REPOSITORY/jenkins/ | grep Gallary | tail -n 1)
 
 echo "> JAR Name: " $JAR_NAME
 
-nohup java -jar $REPOSITORY/jenkins/$JAR_NAME 2>&1 &
+nohup java -jar $REPOSITORY/jenkins/$JAR_NAME >> $REPOSITORY/jenkins/deploy.log 2>$REPOSITORY/jenkins/deploy_err.log &
