@@ -36,9 +36,10 @@ cd $REPOSITORY/$PROJECTNAME/
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls -tr $REPOSITORY/jenkins/ | grep "*.jar" | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/jenkins/ | grep *.jar | tail -n 1)
 
 chmod +x ./$JAR_NAME
 
-echo "> JAR Name: $JAR_NAME" $REPOSITORY/jenkins/nohup.out
-nohup java -jar $JAR_NAME >> $REPOSITORY/jenkins/nohup.out 2>&1 &
+echo "> JAR Name: $JAR_NAME"
+
+nohup java -jar $REPOSITORY/jenkins/$JAR_NAME 2>1 &
