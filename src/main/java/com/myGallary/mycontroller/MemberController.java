@@ -115,7 +115,7 @@ public class MemberController {
 	}
 
 
-	@RequestMapping("/registration")
+	@GetMapping("/registration")
 	public String registration(Model model) {
 		model.addAttribute("account", new Account());
 		return "auth/registration";
