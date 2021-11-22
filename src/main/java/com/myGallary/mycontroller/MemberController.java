@@ -140,7 +140,7 @@ public class MemberController {
 	private GallaryService gallaryService;
 
 	//	게임 리스트 확인 화면
-	@GetMapping(value = "/home/guest")
+	@GetMapping("/home/guest")
 	public String guestHome(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
 
 		List<GallaryDto> gallaryDtos =  gallaryService.getBoardlist(pageNum);
