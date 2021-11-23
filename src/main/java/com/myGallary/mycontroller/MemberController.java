@@ -29,6 +29,11 @@ public class MemberController {
 	@Resource(name = "userServiceImpl")
 	private UserService userService;
 
+	@GetMapping("/registration")
+	public String registration(Model model) {
+		model.addAttribute("account", new Account());
+		return "auth/registration";
+	}
 
 	// 닉네임 기능도 추가해 줍시다.
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -85,7 +90,7 @@ public class MemberController {
 		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
 		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
 
-		return "index.html";
+		return "index";
 	}
 
 
@@ -112,12 +117,6 @@ public class MemberController {
 
 	}
 
-
-	@GetMapping("/registration")
-	public String registration(Model model) {
-		model.addAttribute("account", new Account());
-		return "auth/registration";
-	}
 
 
 	//	관리자 화면
