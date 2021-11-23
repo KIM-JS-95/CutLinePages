@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "www.cutlinepage.ml:8081")
+@CrossOrigin(origins = "http://www.cutlinepage.ml:8081")
 @Controller
 public class MemberController {
 
