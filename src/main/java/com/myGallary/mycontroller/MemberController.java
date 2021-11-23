@@ -35,7 +35,7 @@ public class MemberController {
 		return "auth/registration";
 	}
 
-	// 닉네임 기능도 추가해 줍시다.
+
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String createNewUser(Model model, @Valid Account account, BindingResult bindingResult) {
 		try {
@@ -71,27 +71,6 @@ public class MemberController {
 		return "auth/registration";
 	}
 
-	/**
-	 * Common home
-	 */
-	@GetMapping("/home")
-	public String home(Model model) {
-
-		// springb security에서 사용자의 현재 정보를 가져오기
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Account account = null;
-
-		try {
-			account = userService.getUserByUsername(auth.getName());
-		} catch (Exception e) {
-			log.error("[ykson]" + e.getMessage());
-		}
-
-		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
-		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
-
-		return "index";
-	}
 
 
 	@RequestMapping(value = {"/", "/login"}, method = {RequestMethod.GET, RequestMethod.POST})
@@ -118,6 +97,27 @@ public class MemberController {
 	}
 
 
+	@Autowired
+	private GallaryService gallaryService;
+
+	@GetMapping("/home")
+	public String home(Model model) {
+
+		// springb security에서 사용자의 현재 정보를 가져오기
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Account account = null;
+
+		try {
+			account = userService.getUserByUsername(auth.getName());
+		} catch (Exception e) {
+			log.error("[ykson]" + e.getMessage());
+		}
+
+		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
+		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
+
+		return "index";
+	}
 
 	//	관리자 화면
 	@GetMapping("/home/admin")
@@ -132,8 +132,6 @@ public class MemberController {
 		return "home/user";
 	}
 
-	@Autowired
-	private GallaryService gallaryService;
 
 	//	게임 리스트 확인 화면
 	@GetMapping("/home/guest")
