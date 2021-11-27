@@ -113,7 +113,9 @@ public class MemberController {
 			log.error("[ykson]" + e.getMessage());
 		}
 
-		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
+//		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
+
+		model.addAttribute("username", "" + account.getUsername());
 		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
 
 		return "index";

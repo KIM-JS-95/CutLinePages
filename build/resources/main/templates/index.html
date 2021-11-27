@@ -110,19 +110,22 @@
             <div class="admin-profile hide">
                 <!-- <img src="./img/face-1.png" alt=""> -->
                 <div class="admin-info">
-                    <span class="show" th:text="${username}">John Doe</span>
-                    <span>Logout</span>
+                    <span class="text-uppercase" th:text="${username}" style="">John Doe</span>
                 </div>
             </div>
         </div>
 
+        <br>
+
         <form th:action="@{/logout}" method="get">
             <button class="btn btn-light" name="logout" type="Submit" style="position:relative; left: 0px;" >Logout</button>
         </form>
-
     </div>
 
 </nav>
+
+
+<!-- ........................................................... -->
 
 <div class="container-fluid p-5 mt-5">
 
@@ -132,7 +135,7 @@
         <i class="fab fa-steam fa-5x" style="color: black; margin-right: 50px;"></i>
         <i class="fas fa-gamepad fa-5x" style="color: mediumturquoise; margin-right: 50px;"></i>
 
-        <h1 style="margin-top: 50px; color: black;" class="display-4 mb-4 text-uppercase" >Welcome, <span th:text="${username}" class="text-success">Leo</span></h1>
+<!--        <h1 style="margin-top: 50px; color: black;" class="display-4 mb-4 text-uppercase" >Welcome, <span th:text="${username}" class="text-success">Leo</span></h1>-->
     </div>
 
 
@@ -171,8 +174,6 @@
                 <i class="far fa-meh-rolling-eyes fa-7x mx-auto my-5" style="color: tomato;"></i>
                 <div class="card-body text-center">
                     <h3 class="card-title text-success mb-4">게임 리스트!</h3>
-
-
 
                 </div>
             </div>
