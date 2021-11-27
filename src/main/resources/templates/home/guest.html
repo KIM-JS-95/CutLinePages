@@ -111,11 +111,12 @@
             <div class="admin-profile hide">
                 <!-- <img src="./img/face-1.png" alt=""> -->
                 <div class="admin-info">
-                    <span class="show" th:text="${username}">John Doe</span>
-                    <span>Logout</span>
+                    <span class="text-uppercase" th:text="${username}" style="font-size:20px">John Doe</span>
                 </div>
             </div>
         </div>
+
+        <br>
 
         <form th:action="@{/logout}" method="get">
             <button class="btn btn-light" name="logout" type="Submit" style="position:relative; left: 0px;" >Logout</button>
@@ -169,7 +170,7 @@
 
                     <div style="font-size: 20px;" class="mb-5">
                                 <span th:each="pageNum : ${pageList}" th:inline="text">
-                                    <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+                                    <a th:href="@{'/home/guest?page=' + ${pageNum}}">[[${pageNum}]]</a>
                                 </span>
 
 

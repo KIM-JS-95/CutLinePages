@@ -75,6 +75,15 @@ public class GallaryController {
     }
 
 
+    // ----------------------- < 관리자 api > ----------------------
+
+    // TODO: 관리자 리뷰 링크 "/adminpages/review"
+
+    // TODO: 관리자 리뷰 작성 링크 "/adminpages/reviewcreate"
+
+    // TODO: 관리자 리뷰 작성 링크 "/adminpages/reviewdetail"
+
+
 
 
 }

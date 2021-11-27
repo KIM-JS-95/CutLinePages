@@ -134,7 +134,6 @@ public class MemberController {
 		return "home/user";
 	}
 
-
 	//	게임 리스트 확인 화면
 	@GetMapping("/home/guest")
 	public String guestHome(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
@@ -147,4 +146,10 @@ public class MemberController {
 
 		return "home/guest";
 	}
+
+
+
+
+
+
 }
