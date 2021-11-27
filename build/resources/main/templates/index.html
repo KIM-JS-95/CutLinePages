@@ -97,26 +97,7 @@
                 </a>
             </li>
 
-            <!-- <li class="tooltip-element" data-tooltip="1">
-              <a href="#" data-active="5">
-                <div class="icon">
-                  <i class='bx bx-help-circle'></i>
-                  <i class='bx bxs-help-circle'></i>
-                </div>
-                <span class="link hide">Help</span>
-              </a>
-            </li>
 
-            <li class="tooltip-element" data-tooltip="2">
-              <a href="#" data-active="6">
-                <div class="icon">
-                  <i class='bx bx-cog'></i>
-                  <i class='bx bxs-cog'></i>
-                </div>
-                <span class="link hide">Settings</span>
-              </a>
-            </li>
-          -->
 
         </ul>
     </div>
@@ -129,30 +110,18 @@
             <div class="admin-profile hide">
                 <!-- <img src="./img/face-1.png" alt=""> -->
                 <div class="admin-info">
-                    <h3>John Doe</h3>
-                    <h5>Admin</h5>
+                    <span class="show" th:text="${username}">John Doe</span>
+                    <span>Logout</span>
                 </div>
             </div>
-
-
-            <!-- <a href="#" class="log-out">
-              <i class='bx bx-log-out'></i>
-            </a> -->
-
-
-            <form th:action="@{/logout}" method="get" class="log-out">
-                <a class="bx bx-log-out" name="registration" type="Submit" th:action="@{/logout}" ></a>
-            </form>
-
         </div>
 
-        <!--        <span th:text="${username}" class="text-success">Leo</span>-->
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-light" name="logout" type="Submit" style="position:relative; left: 0px;" >Logout</button>
+        </form>
 
-        <div class="tooltip">
-            <span class="show" th:text="${username}">John Doe</span>
-            <span>Logout</span>
-        </div>
     </div>
+
 </nav>
 
 <div class="container-fluid p-5 mt-5">
@@ -222,7 +191,6 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
-<script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>
 <script src="/js/app.js" async></script>
 </body>
 </html>

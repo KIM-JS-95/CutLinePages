@@ -114,30 +114,17 @@
             <div class="admin-profile hide">
                 <!-- <img src="./img/face-1.png" alt=""> -->
                 <div class="admin-info">
-                    <h3>John Doe</h3>
-                    <h5>Admin</h5>
+                    <span class="show" th:text="${username}">John Doe</span>
+                    <span>Logout</span>
                 </div>
             </div>
-
-
-            <!-- <a href="#" class="log-out">
-              <i class='bx bx-log-out'></i>
-            </a> -->
-
-
-            <form th:action="@{/logout}" method="get" class="log-out">
-                <a class="bx bx-log-out" name="registration" type="Submit" th:action="@{/logout}" ></a>
-            </form>
-
         </div>
 
-<!--        <span th:text="${username}" class="text-success">Leo</span>-->
-
-        <div class="tooltip">
-            <span class="show" th:text="${username}">John Doe</span>
-            <span>Logout</span>
-        </div>
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-light" name="logout" type="Submit" style="position:relative; left: 0px;" >Logout</button>
+        </form>
     </div>
+
 </nav>
 </div>
 
