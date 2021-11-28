@@ -84,19 +84,19 @@ public class GallaryController {
 
     /* -------------------------------------------------------  관리자 페이지 ----------------------------------------------------------*/
 
-    // TODO: 관리자 리뷰 링크 "/adminpages/review"
+
     @GetMapping("/adminpages/review")
     private String review(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum,
                           @RequestParam("title") String title){
 
         // gallaryService.search(title);
 
-        List<Gallary> gallaryDtos = gallaryService.search(title);
+        List<Review> review = reviewService.search(title);
 
         Integer[] pagelist = gallaryService.getSearchList(pageNum, title);
 
 
-        model.addAttribute("boardList",gallaryDtos);
+        model.addAttribute("boardList",review);
         model.addAttribute("pageList",pagelist);
 
         return "adminpages/review";

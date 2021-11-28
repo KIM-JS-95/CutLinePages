@@ -69,7 +69,7 @@
 
             <!--        게임 후기 게시판    -->
             <li class="tooltip-element" data-tooltip="3">
-                <a href="/" data-active="3">
+                <a href="/adminpages/review" data-active="3">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
@@ -77,29 +77,38 @@
                     <span class="link hide">게임 후기 (개발중)</span>
                 </a>
             </li>
-            <div class="tooltip">
-                <span class="show">Dashboard</span>
-                <span>Projects</span>
-                <span>Messages</span>
-                <span>Analytics</span>
-            </div>
+
         </ul>
 
 
         <!-- ........................................................... -->
+
         <h4 class="hide">Shortcuts</h4>
 
+        <!--                일정-->
         <ul>
-            <li class="tooltip-element" data-tooltip="0">
-                <a href="#" data-active="4">
+            <!--            <li class="tooltip-element" data-tooltip="0">-->
+            <!--                <a href="#" data-active="4">-->
+            <!--                    <div class="icon">-->
+            <!--                        <i class='bx bx-notepad'></i>-->
+            <!--                        <i class='bx bxs-notepad'></i>-->
+            <!--                    </div>-->
+            <!--                    <span class="link hide"> 일정 (개발중) </span>-->
+            <!--                </a>-->
+            <!--            </li>-->
+
+
+
+            <!--        관리자 후기 작성   -->
+            <li class="tooltip-element" data-tooltip="3">
+                <a href="/adminpages/reviewcreate" data-active="3">
                     <div class="icon">
-                        <i class='bx bx-notepad'></i>
-                        <i class='bx bxs-notepad'></i>
+                        <i class='bx bx-bar-chart-square'></i>
+                        <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide"> 일정 (개발중) </span>
+                    <span class="link hide">게임 후기 (개발중)</span>
                 </a>
             </li>
-
 
         </ul>
     </div>
@@ -112,17 +121,20 @@
             <div class="admin-profile hide">
                 <!-- <img src="./img/face-1.png" alt=""> -->
                 <div class="admin-info">
-                    <span class="show" th:text="${username}">John Doe</span>
-                    <span>Logout</span>
+                    <span class="text-uppercase" th:text="${username}" style="font-size:20px">John Doe</span>
                 </div>
             </div>
         </div>
+
+        <br>
 
         <form th:action="@{/logout}" method="get">
             <button class="btn btn-light" name="logout" type="Submit" style="position:relative; left: 0px;" >Logout</button>
         </form>
     </div>
+
 </nav>
+
 
 <!-- ........................................................... -->
 
@@ -210,7 +222,7 @@
 
 <script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>
 <script src="/js/app.js" async></script>
-<script src="/js/gallary.js" async></script>
+<script src="/js/review.js" async></script>
 
 </body>
 </html>
