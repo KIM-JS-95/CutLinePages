@@ -25,6 +25,4 @@ public class GallaryDto {
     private String username;
 
     private LocalDateTime createDate;
-
-
 }

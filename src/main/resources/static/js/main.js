@@ -48,7 +48,7 @@ var data = {
     $.ajax({
         type: 'POST',
         url: '/user/login',
-        contentType:'application/json; charset=utf-8',
+        contentType:'application/json;,
         data: JSON.stringify(data)
     }).done(function(){
       alert('로그인 했습니다.');

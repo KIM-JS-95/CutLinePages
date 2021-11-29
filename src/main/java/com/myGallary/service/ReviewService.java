@@ -2,8 +2,6 @@ package com.myGallary.service;
 
 
 import com.myGallary.Repository.ReviewRepository;
-import com.myGallary.entity.Gallary;
-import com.myGallary.entity.GallaryDto;
 import com.myGallary.entity.Review;
 import com.myGallary.entity.ReviewDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +28,7 @@ public class ReviewService {
 
     // 겔러리 모든 데이터 출력
     @Transactional
-    public List<Review> getBoardlist(Integer pageNum) {
+    public List<ReviewDTO> getBoardlist(Integer pageNum) {
 
         Page<Review> page = reviewRepository
                 .findAll(PageRequest.of(pageNum-1, PAGE_POST_COUNT,
@@ -41,7 +38,7 @@ public class ReviewService {
 
         List<Review> boards = page.getContent();
 
-        List<Review> boardDtoList = new ArrayList<>();
+        List<ReviewDTO> boardDtoList = new ArrayList<>();
 
         for(Review board : boards){
             boardDtoList.add(this.convertEntityToDto(board));
@@ -105,7 +102,7 @@ public class ReviewService {
     /* -------------------------------------------------------   CRUD API ----------------------------------------------------------*/
 
     // 수정
-    public void update(Long id, GallaryDto gallary) {
+    public void update(Long id, Review gallary) {
         Review reviews = reviewRepository.findById(id).orElseThrow(()
                -> new IllegalArgumentException("정보가 없어요!"));
 
@@ -133,18 +130,22 @@ public class ReviewService {
 
 
     // 게시글 저장
-    public Review create(Review review) throws IOException {
+    public Review create(Review review){
+        review.setUsername("admin");
         return reviewRepository.save(review);
     }
 
 
-    private Review convertEntityToDto(Review board) {
-        return Review.builder()
+    private ReviewDTO convertEntityToDto(Review board) {
+        return ReviewDTO.builder()
                 .id(board.getId())
                 .title(board.getTitle())
                 .content(board.getContent())
+                .username(board.getUsername())
+                .createDate(board.getCreateDate())
                 .link(board.getLink())
                 .build();
     }
+
 
 }

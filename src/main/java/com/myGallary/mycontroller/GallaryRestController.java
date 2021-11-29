@@ -1,5 +1,6 @@
 package com.myGallary.mycontroller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.myGallary.entity.Account;
 import com.myGallary.entity.Gallary;
 import com.myGallary.entity.GallaryDto;
@@ -21,6 +22,7 @@ import java.util.List;
 // 모든 게시글은 @Controller에서 담당
 
 @RestController
+
 public class GallaryRestController {
 
     protected Logger log = LoggerFactory.getLogger(this.getClass());
@@ -33,7 +35,7 @@ public class GallaryRestController {
 
     // 게시글 작성
     @PostMapping("/gallary/create")
-    private void create(@RequestPart(value = "key") Gallary gallary) throws IOException {
+    private void create(@RequestBody Gallary gallary) throws IOException {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Account account = null;

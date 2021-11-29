@@ -4,12 +4,15 @@ $('#save').on('click', function () {
     var data={
              title: $('#title').val(),
              content: $('#content').val(),
+             link: $('#link').val()
          };
 
      $.ajax({
          type: 'POST',
          url: '/adminpages/create',
+         dataType: 'json',
          contentType:'application/json; charset=utf-8',
+         data: JSON.stringify(data)
      }).done(function(){
       alert('저장 성공');
       window.location.href='/home'
@@ -28,7 +31,9 @@ if(confirm("삭제하시겠습니까?")==true){
               $.ajax({
                type: 'DELETE',
                url: '/adminpages/delete/'+id ,
-               contentType:'application/json; charset=utf-8',
+                 dataType: 'json',
+                           contentType:'application/json; charset=utf-8',
+                           data: JSON.stringify(data)
            }).done(function(){
            alert('글이 삭제되었습니다.');
             window.location.href='/home/guest'
@@ -61,13 +66,14 @@ $('#update').on('click', function(){
 
     var data={
              title: $('#title').val(),
-             content: $('#content').val(),
+             content: $('#content').val()
          };
 
      $.ajax({
          type: 'PUT',
          url: '/adminpages/update/' +id,
-         contentType:'application/json; charset=utf-8',
+         dataType: 'json',
+         contentType:'application/json;',
          data: JSON.stringify(data)
      }).done(function(){
       alert('저장 성공');

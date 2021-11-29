@@ -1,7 +1,6 @@
 package com.myGallary.service;
 
 
-// import com.amazonaws.services.s3.AmazonS3Client;
 import com.myGallary.Repository.GallaryRepository;
 import com.myGallary.entity.Gallary;
 import com.myGallary.entity.GallaryDto;
@@ -12,9 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,7 +109,7 @@ public class GallaryService {
 
        gallarys.setTitle(gallary.getTitle());
        gallarys.setContent(gallary.getContent());
-       gallarys.setLink(gallary.getLink());
+//       gallarys.setLink(gallary.getLink());
 
        gallaryRepository.save(gallarys);
     }
@@ -161,7 +158,7 @@ public class GallaryService {
                 .id(board.getId())
                 .title(board.getTitle())
                 .content(board.getContent())
-                .link(board.getLink())
+//                .link(board.getLink())
                 .username(board.getUsername())
                 .createDate(board.getCreateDate())
                 .build();

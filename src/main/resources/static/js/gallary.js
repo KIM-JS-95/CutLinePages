@@ -1,24 +1,16 @@
 $('#save').on('click', function () {
     var data={
              title: $('#title').val(),
-             content: $('#content').val(),
-             link: $('#link').val()
+             content: $('#content').val()
+//             link: $('#link').val()
          };
-
-         var form =$('#form')[0];
-         var formData = new FormData(form);
-         formData.append('file', $('#file'));
-         formData.append('key', new Blob([JSON.stringify(data)] ,
-         {type: "application/json"
-       }));
-
 
      $.ajax({
          type: 'POST',
          url: '/gallary/create',
-         processData: false,
-         contentType:false,
-         data: formData,
+         dataType: 'json',
+         contentType:'application/json; charset=utf-8',
+         data: JSON.stringify(data)
      }).done(function(){
       alert('저장 성공');
       window.location.href='/home/guest'

@@ -9,13 +9,12 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Review extends TimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotBlank
@@ -28,6 +27,6 @@ public class Review extends TimeEntity {
     @NotBlank
     private String link;
 
-
-
+    @NotBlank
+    private String username;
 }

@@ -86,43 +86,34 @@ public class GallaryController {
 
 
     @GetMapping("/adminpages/review")
-    private String review(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum,
-                          @RequestParam("title") String title){
+    private String review(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum){
 
-        // gallaryService.search(title);
 
-        List<Review> review = reviewService.search(title);
-
-        Integer[] pagelist = gallaryService.getSearchList(pageNum, title);
-
+        List<ReviewDTO> review = reviewService.getBoardlist(pageNum);
+        Integer[] pagelist = reviewService.getPageList(pageNum);
 
         model.addAttribute("boardList",review);
         model.addAttribute("pageList",pagelist);
 
-        return "adminpages/review";
+        return "home/adminpages/review";
     }
 
     // TODO: 관리자 리뷰 작성 링크 "/adminpages/reviewcreate"
     @GetMapping("/adminpages/reviewcreate")
-    public String reviewcreate(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
+    public String reviewcreate(Model model) {
 
-        List<Review> gallaryDtos = reviewService.getBoardlist(pageNum);
-        Integer[] pagelist = gallaryService.getPageList(pageNum);
-
-        model.addAttribute("boardList", gallaryDtos);
-        model.addAttribute("pageList", pagelist);
-
-        return "adminpages/reviewcreate";
+        return "home/adminpages/reviewcreate";
     }
 
     // TODO: 관리자 리뷰 디테일 링크 "/adminpages/reviewdetail"
-    @GetMapping("/adminpages/reviewdetail")
+    @GetMapping("/adminpages/view/{id}")
     private String reviewdetail(@PathVariable("id") Long index, Model model) {
         Review review = reviewService.findIndex(index).orElseThrow(()
                 -> new IllegalArgumentException("error"));
 
         model.addAttribute("details", review);
-        return "adminpages/reviewdetail";
+        return "home/adminpages/reviewdetail";
     }
 
+    // TODO: 검색기능 추가
 }

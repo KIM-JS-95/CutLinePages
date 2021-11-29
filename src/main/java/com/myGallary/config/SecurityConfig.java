@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/registration","/home","/home/guest").permitAll()
 
-                .antMatchers("/home/**").hasAuthority(ERole.ADMIN.getValue()) // admin
+                .antMatchers("/home/**","/adminpages/reviewcreate").hasAuthority(ERole.ADMIN.getValue()) // admin
 
                 .antMatchers( "/home/**").hasAuthority(ERole.MANAGER.getValue()) // user
 
