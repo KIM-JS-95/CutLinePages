@@ -33,7 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.debug("[ykson] call the loadUserByUsername()");
+        log.debug("[admin] call the loadUserByUsername()");
         //< get the user information
         Account user = null;
         try {

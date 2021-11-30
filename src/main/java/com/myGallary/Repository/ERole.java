@@ -7,9 +7,6 @@ public enum ERole {
 
     private String value;
 
-    /**
-     * Basic Constructor
-     */
     private ERole(String value) {
         this.setValue(value);
     }

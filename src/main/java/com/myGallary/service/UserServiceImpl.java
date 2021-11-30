@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-//    @Value("${usercode.code}")
-//    public String code;
+    @Value("${user.code}")
+    public String usercode;
 
     @Override
     public Account setUser(Account user) throws Exception {
@@ -49,18 +49,26 @@ public class UserServiceImpl implements UserService {
         //< set the user role
         Role userRole = null;
 
+        System.out.println( "code는 =" + user.getUsercode());
+        System.out.println( "usercode는 =" + usercode);
 
-        // username -> usercode 로 변경하여 관리해보자
-        // .equals("usercode") 로 변경해도 저장은 admin / user / guest 로 구분되도록
         if(user.getUsercode().equals("admin")) {
             userRole = roleRepository.findByRole(ERole.ADMIN.getValue());
         }
-        else if(user.getUsercode().equals( "user" )) {
+
+        // 주솟값 문제 인듯한데
+        // properties 파일의 데이터는 그 자체가 String type 이기 때문에 문자열 비교할때는
+        // properties 내부에 "your name" 이런 방식으로 적을 필요가 없다.
+        else if(user.getUsercode().equals(usercode)) {
+            System.out.println("user로 들어왔난요?>");
             userRole = roleRepository.findByRole(ERole.MANAGER.getValue());
         }
         else {
+            System.out.println("guest로 들어왔난요?>");
             userRole = roleRepository.findByRole(ERole.GUEST.getValue());
         }
+
+        System.out.println(userRole.getRole());
 
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 

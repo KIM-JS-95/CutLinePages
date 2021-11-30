@@ -55,7 +55,7 @@ public class MemberController {
             }
 
             if (bindingResult.hasErrors()) {
-                log.error("[ykson] : " + bindingResult.getFieldError().toString());
+                log.error("[CutLine] : " + bindingResult.getFieldError().toString());
             } else {
                 //< save the user information
                 userService.setUser(account);
