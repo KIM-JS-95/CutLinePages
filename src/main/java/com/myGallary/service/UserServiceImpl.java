@@ -26,6 +26,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Value("${user.code}")
+    public String usercode;
+
+    @Value("${admin.code}")
+    public String admincode;
+
     @Override
     public Account getUserByEmail(String email) throws Exception {
         return accountRepository.findByEmail(email);
@@ -37,28 +43,25 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Value("${user.code}")
-    public String usercode;
-
     @Override
     public Account setUser(Account user) throws Exception {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        //< set the active flag
+
         user.setIsActive(true);
-        //< set the user role
+
         Role userRole = null;
 
-        System.out.println( "code는 =" + user.getUsercode());
-        System.out.println( "usercode는 =" + usercode);
-
-        if(user.getUsercode().equals("admin")) {
+        if(user.getUsercode().equals(admincode)) {
             userRole = roleRepository.findByRole(ERole.ADMIN.getValue());
         }
 
-        // 주솟값 문제 인듯한데
-        // properties 파일의 데이터는 그 자체가 String type 이기 때문에 문자열 비교할때는
-        // properties 내부에 "your name" 이런 방식으로 적을 필요가 없다.
+        /*
+        주솟값 문제 인듯한데
+        properties 파일의 데이터는 그 자체가 String type 이기 때문에 문자열 비교할때는
+        properties 내부에 "your name" 이런 방식으로 적을 필요가 없다.
+         */
+
         else if(user.getUsercode().equals(usercode)) {
             System.out.println("user로 들어왔난요?>");
             userRole = roleRepository.findByRole(ERole.MANAGER.getValue());

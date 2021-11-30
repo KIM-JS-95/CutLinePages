@@ -82,7 +82,6 @@ public class MemberController {
     @RequestMapping(value = {"/logout"}, method = {RequestMethod.GET, RequestMethod.POST})
     public void logout() {
 
-        System.out.println("도착?");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Account account = null;
 
@@ -103,20 +102,11 @@ public class MemberController {
     @GetMapping("/home")
     public String home(Model model) {
 
-        // springb security에서 사용자의 현재 정보를 가져오기
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Account account = null;
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
 
-        try {
-            account = userService.getUserByUsername(auth.getName());
-        } catch (Exception e) {
-            log.error("[ykson]" + e.getMessage());
-        }
-
-//		model.addAttribute("username", "" + account.getUsername() + "(" + account.getEmail() + ")");
-
-        model.addAttribute("username", "" + account.getUsername());
-        model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
 
         return "index";
     }
@@ -125,6 +115,13 @@ public class MemberController {
     //	추천 게임 등록 화면
     @GetMapping("/home/user")
     public String userHome(Model model) {
+
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
+
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
+
         return "home/user";
     }
 
@@ -135,11 +132,33 @@ public class MemberController {
         List<GallaryDto> gallaryDtos = gallaryService.getBoardlist(pageNum);
         Integer[] pagelist = gallaryService.getPageList(pageNum);
 
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
+
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
+
         model.addAttribute("boardList", gallaryDtos);
         model.addAttribute("pageList", pagelist);
 
         return "home/guest";
     }
 
+    public Account Getuser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Account account = null;
 
+        try {
+            account = userService.getUserByUsername(auth.getName());
+        } catch (Exception e) {
+            log.error("[CutLine]" + e.getMessage());
+        }
+        return account;
+    }
+
+    public String nick(Model model, String nickname){
+        model.addAttribute("username", "" + nickname);
+        model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
+        return "home/fragment/side";
+    }
 }

@@ -1,14 +1,16 @@
 package com.myGallary.mycontroller;
 
 
-import com.myGallary.entity.Gallary;
-import com.myGallary.entity.GallaryDto;
-import com.myGallary.entity.Review;
-import com.myGallary.entity.ReviewDTO;
+import com.myGallary.entity.*;
 import com.myGallary.service.GallaryService;
 import com.myGallary.service.ReviewService;
+import com.myGallary.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,20 +26,12 @@ public class GallaryController {
     private GallaryService gallaryService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private ReviewService reviewService;
 
-    // 게시판
-//    @GetMapping("/gallary")
-//    public String gallary(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
-//
-//        List<GallaryDto> gallaryDtos =  gallaryService.getBoardlist(pageNum);
-//        Integer[] pagelist = gallaryService.getPageList(pageNum);
-//
-//
-//        model.addAttribute("boardList",gallaryDtos);
-//        model.addAttribute("pageList",pagelist);
-//        return "gallary";
-//    }
+    protected Logger log = LoggerFactory.getLogger(this.getClass());
 
 
     // 게시판 수정
@@ -92,6 +86,12 @@ public class GallaryController {
         List<ReviewDTO> review = reviewService.getBoardlist(pageNum);
         Integer[] pagelist = reviewService.getPageList(pageNum);
 
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
+
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
+
         model.addAttribute("boardList",review);
         model.addAttribute("pageList",pagelist);
 
@@ -102,6 +102,13 @@ public class GallaryController {
     @GetMapping("/adminpages/reviewcreate")
     public String reviewcreate(Model model) {
 
+
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
+
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
+
         return "home/adminpages/reviewcreate";
     }
 
@@ -111,9 +118,35 @@ public class GallaryController {
         Review review = reviewService.findIndex(index).orElseThrow(()
                 -> new IllegalArgumentException("error"));
 
+
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
+
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
+
         model.addAttribute("details", review);
         return "home/adminpages/reviewdetail";
     }
 
     // TODO: 검색기능 추가
+
+
+    public Account Getuser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Account account = null;
+
+        try {
+            account = userService.getUserByUsername(auth.getName());
+        } catch (Exception e) {
+            log.error("[CutLine]" + e.getMessage());
+        }
+        return account;
+    }
+
+    public String nick(Model model, String nickname){
+        model.addAttribute("username", "" + nickname);
+        model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
+        return "home/fragment/side";
+    }
 }
