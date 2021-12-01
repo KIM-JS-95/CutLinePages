@@ -156,9 +156,9 @@ public class MemberController {
         return account;
     }
 
-    public String nick(Model model, String nickname){
+    public Model nick(Model model, String nickname){
         model.addAttribute("username", "" + nickname);
         model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
-        return "home/fragment/side";
+        return model;
     }
 }
