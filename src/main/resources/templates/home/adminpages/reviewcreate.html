@@ -10,7 +10,110 @@
 <body>
 
 <!-- 사이트 바 -->
-<div th:replace="/home/fragment/side.html :: fragment-nav"></div>
+<!--<div th:replace="/home/fragment/side.html :: fragment-nav"></div>-->
+
+<nav>
+    <br>
+    <div class="sidebar-top">
+    <span class="shrink-btn">
+      <i class='bx bx-chevron-left'></i>
+    </span>
+        <img src="../image/logo.png" class="logo" alt="">
+        <h3 class="hide" onclick="location.href='/home'">Aqumex</h3>
+    </div>
+
+    <br><br>
+
+    <div class="sidebar-links">
+        <ul>
+            <div class="active-tab"></div>
+            <!--            홈 -->
+            <li class="tooltip-element" data-tooltip="0">
+                <a href="/home" class="active" data-active="0">
+                    <div class="icon">
+                        <i class='bx bx-tachometer'></i>
+
+                    </div>
+                    <span class="link hide">Main</span>
+                </a>
+            </li>
+
+            <!--            게임 등록 -->
+            <li class="tooltip-element" data-tooltip="1">
+                <a href="/home/user" data-active="1">
+                    <div class="icon">
+                        <i class='bx bx-folder'></i>
+                        <i class='bx bxs-folder'></i>
+                    </div>
+                    <span class="link hide">게임등록</span>
+                </a>
+            </li>
+
+            <!--            요청 리스트 -->
+            <li class="tooltip-element" data-tooltip="2">
+                <a href="/home/guest" data-active="2">
+                    <div class="icon">
+                        <i class='bx bx-message-square-detail'></i>
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                    <span class="link hide">요청 리스트</span>
+                </a>
+            </li>
+
+            <!--        게임 후기 게시판    -->
+            <li class="tooltip-element" data-tooltip="3">
+                <a href="/adminpages/review" data-active="3">
+                    <div class="icon">
+                        <i class='bx bx-bar-chart-square'></i>
+                        <i class='bx bxs-bar-chart-square'></i>
+                    </div>
+                    <span class="link hide">게임 후기 (개발중)</span>
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- ........................................................... -->
+
+        <h4 class="hide">Shortcuts</h4>
+
+        <ul>
+
+            <!--        관리자 후기 작성   -->
+            <li class="tooltip-element" data-tooltip="3">
+                <a href="/adminpages/reviewcreate" data-active="3">
+                    <div class="icon">
+                        <i class='bx bx-bar-chart-square'></i>
+                        <i class='bx bxs-bar-chart-square'></i>
+                    </div>
+                    <span class="link hide">게임 후기 (개발중)</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="sidebar-footer">
+        <a href="#" class="account tooltip-element" data-tooltip="0">
+            <i class='bx bx-user'></i>
+        </a>
+        <div class="admin-user tooltip-element" data-tooltip="1">
+            <div class="admin-profile hide">
+                <!-- <img src="./img/face-1.png" alt=""> -->
+                <div class="admin-info">
+                    <span class="text-uppercase" th:text="${username}" style="font-size:20px">John Doe</span>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-light" name="logout" type="Submit" style="position:relative; left: 0px;" >Logout</button>
+        </form>
+    </div>
+</nav>
 
 <div class="container-fluid p-5 mt-5 text-center">
 
