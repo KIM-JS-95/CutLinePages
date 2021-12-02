@@ -15,12 +15,12 @@ import javax.validation.constraints.NotNull;
 public class Gallary extends TimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
 
     @NotBlank
-    @Column(length =500, nullable = false)
+    @Column(length =1000, nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)

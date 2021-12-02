@@ -18,7 +18,7 @@ public class Review extends TimeEntity {
     private Long id;
 
     @NotBlank
-    @Column(length =500, nullable = false)
+    @Column(length =1000, nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)

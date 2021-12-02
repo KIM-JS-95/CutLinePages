@@ -22,7 +22,7 @@ public class ReviewRestController {
     @PostMapping("/adminpages/create")
     @JsonProperty
     private void create(@RequestBody Review review){
-        System.out.println(review.getTitle());
+
         reviewService.create(review);
     }
 
@@ -37,6 +37,7 @@ public class ReviewRestController {
     // 게시글 삭제
     @DeleteMapping("/adminpages/delete/{id}")
     private void delete(@PathVariable("id") Long id){
+        System.out.println(id);
         reviewService.delete(id);
     }
 

@@ -129,8 +129,23 @@ public class GallaryController {
         return "home/adminpages/reviewdetail";
     }
 
-    // TODO: 검색기능 추가
+    // TODO: 수정기능
 
+    @GetMapping("/adminpages/update/{id}")
+    private String reviewupdate(@PathVariable("id") Long index, Model model) {
+        Review review = reviewService.findIndex(index).orElseThrow(()
+                -> new IllegalArgumentException("error"));
+
+
+        // TODO: 현재 유저의 정보 가져오기
+        Account account=Getuser();
+
+        // TODO: 유저 이름 side.html으로 보내기
+        nick(model,account.getUsername());
+
+        model.addAttribute("details", review);
+        return "home/adminpages/adminmodipage";
+    }
 
     public Account Getuser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

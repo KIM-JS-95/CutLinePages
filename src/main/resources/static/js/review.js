@@ -1,6 +1,7 @@
 
 // 리뷰 저장
 $('#save').on('click', function () {
+
     var data={
              title: $('#title').val(),
              content: $('#content').val(),
@@ -30,13 +31,11 @@ if(confirm("삭제하시겠습니까?")==true){
 
               $.ajax({
                type: 'DELETE',
-               url: '/adminpages/delete/'+id ,
-                 dataType: 'json',
-                           contentType:'application/json; charset=utf-8',
-                           data: JSON.stringify(data)
+               url: '/adminpages/delete/'+id,
+
            }).done(function(){
            alert('글이 삭제되었습니다.');
-            window.location.href='/home/guest'
+            window.location.href='/adminpages/review'
            }).fail(function (error) {
            alert(JSON.stringify(error));
      });
@@ -65,7 +64,7 @@ $('#update').on('click', function(){
       var id=document.getElementById("id1").innerText;
 
     var data={
-             title: $('#title').val(),
+             title: $('#title'),
              content: $('#content').val()
          };
 
