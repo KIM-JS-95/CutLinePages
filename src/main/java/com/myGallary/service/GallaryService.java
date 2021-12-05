@@ -131,28 +131,13 @@ public class GallaryService {
 
 
 
-
-     // private final S3Uploader s3Uploader;
-
     // 게시글 저장
     public Gallary create(Gallary gallary) throws IOException {
 
-//        String originalfileName = file.getOriginalFilename();
-//        System.out.println(originalfileName);
-//
-//        s3Uploader.upload(file, "static");
-
-//        // 파일 생성
-//        File dest = new File(path);
-//        // 파일 저장
-//        file.transferTo(dest);
-//
-//        gallary.setFilePath(path);
 
         return gallaryRepository.save(gallary);
     }
 
-    // TODO: AWS S3 파일 저장 구현
     private GallaryDto convertEntityToDto(Gallary board) {
         return GallaryDto.builder()
                 .id(board.getId())

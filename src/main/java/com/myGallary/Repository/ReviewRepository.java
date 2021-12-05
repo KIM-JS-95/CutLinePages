@@ -2,6 +2,7 @@ package com.myGallary.Repository;
 
 
 import com.myGallary.entity.Review;
+import com.myGallary.entity.ReviewDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     Optional<Review> findById(Long id);
 
-    List<Review> findByTitle(String title);
+    List<ReviewDTO> findByTitle(String title);
 
     Long countByTitle(String title);
 

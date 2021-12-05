@@ -35,7 +35,7 @@ if(confirm("삭제하시겠습니까?")==true){
 
            }).done(function(){
            alert('글이 삭제되었습니다.');
-            window.location.href='/adminpages/view'
+            window.location.href='/adminpages/review'
            }).fail(function (error) {
            alert(JSON.stringify(error));
      });

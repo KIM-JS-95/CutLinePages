@@ -59,15 +59,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/registration","/home","/home/guest").permitAll()
+                .antMatchers("/", "/login", "/registration","/home/guest", "/adminpages/review","/adminpages/view/{id}","/gallary/view/{id}").permitAll()
 
-                .antMatchers("/home/user","/adminpages/reviewcreate").hasAuthority(ERole.ADMIN.getValue()) // admin
-
-                .antMatchers( "/home/**").hasAuthority(ERole.MANAGER.getValue()) // user
-
+                .antMatchers("/home/**","/adminpages/reviewcreate").hasAuthority(ERole.ADMIN.getValue()) // admin
+                .antMatchers( "/home/user").hasAuthority(ERole.MANAGER.getValue()) // user
                 //.antMatchers("/home/guest").hasAuthority(ERole.GUEST.getValue()) // guest
-
                 .anyRequest().authenticated()
+
                 .and()
                 .csrf()
                 .disable()
@@ -89,9 +87,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-
-                // @Controller 로그아웃 개별 기능 추가가 가능할까?
-                // .logoutUrl("/logout")
 
                 .logoutSuccessUrl("/login")
                 .and()

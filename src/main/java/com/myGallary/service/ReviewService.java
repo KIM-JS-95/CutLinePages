@@ -124,7 +124,7 @@ public class ReviewService {
     }
 
     // 검색
-    public List<Review> search(String title) {
+    public List<ReviewDTO> search(String title) {
         return reviewRepository.findByTitle(title);
     }
 

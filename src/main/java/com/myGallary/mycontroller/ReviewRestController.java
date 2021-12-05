@@ -37,7 +37,7 @@ public class ReviewRestController {
     // 게시글 삭제
     @DeleteMapping("/adminpages/delete/{id}")
     private void delete(@PathVariable("id") Long id){
-        System.out.println(id);
+
         reviewService.delete(id);
     }
 

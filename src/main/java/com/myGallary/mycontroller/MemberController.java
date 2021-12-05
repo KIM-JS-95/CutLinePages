@@ -73,7 +73,7 @@ public class MemberController {
     }
 
 
-    @RequestMapping(value = {"/", "/login"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = {"/login"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String login(Model model) {
         return "auth/login";
     }
@@ -134,9 +134,10 @@ public class MemberController {
 
         // TODO: 현재 유저의 정보 가져오기
         Account account=Getuser();
-
-        // TODO: 유저 이름 side.html으로 보내기
-        nick(model,account.getUsername());
+        if(account != null){
+            // TODO: 유저 이름 side.html으로 보내기
+            nick(model,account.getUsername());
+        }
 
         model.addAttribute("boardList", gallaryDtos);
         model.addAttribute("pageList", pagelist);

@@ -59,17 +59,15 @@ public class GallaryController {
     // 게임 추천글 검색
     @GetMapping("/gallary/view")
     private String view(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum,
-                        @RequestParam("title") String title){
-
-        // gallaryService.search(title);
+                        @RequestParam("title") String title) {
 
         List<Gallary> gallaryDtos = gallaryService.search(title);
 
         Integer[] pagelist = gallaryService.getSearchList(pageNum, title);
 
 
-        model.addAttribute("boardList",gallaryDtos);
-        model.addAttribute("pageList",pagelist);
+        model.addAttribute("boardList", gallaryDtos);
+        model.addAttribute("pageList", pagelist);
 
         return "home/guest";
     }
@@ -79,21 +77,44 @@ public class GallaryController {
     /* -------------------------------------------------------  관리자 페이지 ----------------------------------------------------------*/
 
 
+    // 리뷰 전체 출력
     @GetMapping("/adminpages/review")
-    private String review(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum){
+    private String review(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
 
 
         List<ReviewDTO> review = reviewService.getBoardlist(pageNum);
         Integer[] pagelist = reviewService.getPageList(pageNum);
 
         // TODO: 현재 유저의 정보 가져오기
-        Account account=Getuser();
+        Account account = Getuser();
+        if (account != null) {
+            // TODO: 유저 이름 side.html으로 보내기
+            nick(model, account.getUsername());
+        }
 
-        // TODO: 유저 이름 side.html으로 보내기
-        nick(model,account.getUsername());
+        model.addAttribute("boardList", review);
+        model.addAttribute("pageList", pagelist);
 
-        model.addAttribute("boardList",review);
-        model.addAttribute("pageList",pagelist);
+        return "home/adminpages/review";
+    }
+
+    // 리뷰 검색 출력
+    @GetMapping("/adminpages/review/search")
+    private String reviewsearch(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum
+    ,@RequestParam("title") String title) {
+
+        List<ReviewDTO> review = reviewService.search(title);
+        Integer[] pagelist = reviewService.getSearchList(pageNum,title);
+
+        // TODO: 현재 유저의 정보 가져오기
+        Account account = Getuser();
+        if (account != null) {
+            // TODO: 유저 이름 side.html으로 보내기
+            nick(model, account.getUsername());
+        }
+
+        model.addAttribute("boardList", review);
+        model.addAttribute("pageList", pagelist);
 
         return "home/adminpages/review";
     }
@@ -104,10 +125,10 @@ public class GallaryController {
 
 
         // TODO: 현재 유저의 정보 가져오기
-        Account account=Getuser();
+        Account account = Getuser();
 
         // TODO: 유저 이름 side.html으로 보내기
-        nick(model,account.getUsername());
+        nick(model, account.getUsername());
 
         return "home/adminpages/reviewcreate";
     }
@@ -119,18 +140,16 @@ public class GallaryController {
                 -> new IllegalArgumentException("error"));
 
 
-        // TODO: 현재 유저의 정보 가져오기
-        Account account=Getuser();
 
-        // TODO: 유저 이름 side.html으로 보내기
-        nick(model,account.getUsername());
-
+        Account account = Getuser();
+        if (account != null) {
+            nick(model, account.getUsername());
+        }
         model.addAttribute("details", review);
         return "home/adminpages/reviewdetail";
     }
 
     // TODO: 수정기능
-
     @GetMapping("/adminpages/update/{id}")
     private String reviewupdate(@PathVariable("id") Long index, Model model) {
         Review review = reviewService.findIndex(index).orElseThrow(()
@@ -138,16 +157,16 @@ public class GallaryController {
 
 
         // TODO: 현재 유저의 정보 가져오기
-        Account account=Getuser();
+        Account account = Getuser();
 
         // TODO: 유저 이름 side.html으로 보내기
-        nick(model,account.getUsername());
+        nick(model, account.getUsername());
 
         model.addAttribute("details", review);
         return "home/adminpages/adminmodipage";
     }
 
-    public Account Getuser(){
+    public Account Getuser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Account account = null;
 
@@ -159,7 +178,7 @@ public class GallaryController {
         return account;
     }
 
-    public Model nick(Model model, String nickname){
+    public Model nick(Model model, String nickname) {
         model.addAttribute("username", "" + nickname);
         model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
         return model;
