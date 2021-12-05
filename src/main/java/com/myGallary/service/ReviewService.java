@@ -125,7 +125,7 @@ public class ReviewService {
 
     // 검색
     public List<Review> search(String title) {
-        return reviewRepository.findByTitle(title);
+        return reviewRepository.findByTitleIgnoreCaseContaining(title);
     }
 
 

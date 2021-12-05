@@ -59,7 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/registration","/home/guest", "/adminpages/review","/adminpages/view/{id}","/gallary/view/{id}").permitAll()
+                .antMatchers("/", "/login", "/registration","/home/guest", "/adminpages/review","/adminpages/view/{id}"
+                        ,"/gallary/view/{id}","/adminpages/review/search").permitAll()
 
                 .antMatchers("/home/**","/adminpages/reviewcreate").hasAuthority(ERole.ADMIN.getValue()) // admin
                 .antMatchers( "/home/user").hasAuthority(ERole.MANAGER.getValue()) // user

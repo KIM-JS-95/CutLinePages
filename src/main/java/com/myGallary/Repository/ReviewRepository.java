@@ -18,11 +18,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     Optional<Review> findById(Long id);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
-    List<Review> findByTitle(String title);
+    List<Review> findByTitleIgnoreCaseContaining(String title);
 
     Long countByTitle(String title);
 
