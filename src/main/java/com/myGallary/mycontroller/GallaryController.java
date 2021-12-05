@@ -103,7 +103,7 @@ public class GallaryController {
     private String reviewsearch(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum
     ,@RequestParam("title") String title) {
 
-        List<ReviewDTO> review = reviewService.search(title);
+        List<Review> review = reviewService.search(title);
         Integer[] pagelist = reviewService.getSearchList(pageNum,title);
 
         // TODO: 현재 유저의 정보 가져오기

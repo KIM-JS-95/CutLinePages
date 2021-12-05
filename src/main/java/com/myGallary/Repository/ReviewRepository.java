@@ -18,7 +18,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     Optional<Review> findById(Long id);
 
-    List<ReviewDTO> findByTitle(String title);
+
+    List<Review> findByTitle(String title);
 
     Long countByTitle(String title);
 
