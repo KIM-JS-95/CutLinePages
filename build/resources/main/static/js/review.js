@@ -16,7 +16,7 @@ $('#save').on('click', function () {
          data: JSON.stringify(data)
      }).done(function(){
       alert('저장 성공');
-      window.location.href='/home'
+      window.location.href='/adminpages/review'
      }).fail(function (error) {
      alert(JSON.stringify(error));
      });
