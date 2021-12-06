@@ -8,7 +8,7 @@
 
 <img src="https://user-images.githubusercontent.com/65659478/143237888-f14d9579-439a-4b84-bf0f-f68223552e45.png" width="200" height="200"/>
 
-## www.cutlinepage.ml:8081
+## www.cutlinepage.ml
 
 ---
 
@@ -67,13 +67,9 @@
 ### DeBug list
 #### 9. 페이지 글자수 카운트 추가
 #### 11. 리뷰 작성 후 페이지 이동 에러
+#### 권한 삭제 추가
+[권한삭제 링크](https://velog.io/@business160308/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-Part7-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0-%EC%A0%91%EB%AA%A9)
 
-
-```
-예: 
-모두 -> 검색 실패
-모두다 죽여야 해 -> 검색 성공
-```
 
 ---
 
