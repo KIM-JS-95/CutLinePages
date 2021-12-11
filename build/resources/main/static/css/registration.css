@@ -1,0 +1,26 @@
+
+body {
+    background: #261B23;
+    color: #db3246;
+    height: 100vh;
+}
+
+.signup-form {
+    background: #261B23;
+    color: #db3246;
+}
+
+.signup-text {
+    background: #dfaeae;
+    color: #eee;
+    border: 0;
+}
+
+.signup-text:focus {
+	color: #111;
+}
+
+.validation-message {
+	color: #ee4835;
+	margin-bottom: auto;
+}

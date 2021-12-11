@@ -1,0 +1,187 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<head>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+
+<!--    &lt;!&ndash; 부가적인 테마 &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">-->
+
+<!--    <title>절취선의 게임 LIFE</title>-->
+
+<!--    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="/css/style.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>-->
+<!--    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<nav>-->
+<!--    <br>-->
+<!--    <div class="sidebar-top">-->
+<!--    <span class="shrink-btn">-->
+<!--      <i class='bx bx-chevron-left'></i>-->
+<!--    </span>-->
+<!--        <img src="./image/logo.png" class="logo" alt="">-->
+<!--        <h3 class="hide" onclick="location.href='/home'">Aqumex</h3>-->
+<!--    </div>-->
+
+<!--    <br><br>-->
+
+<!--    <div class="sidebar-links">-->
+<!--        <ul>-->
+<!--            <div class="active-tab"></div>-->
+<!--            &lt;!&ndash;            홈 &ndash;&gt;-->
+<!--            <li class="tooltip-element" data-tooltip="0">-->
+<!--                <a href="/home" class="active" data-active="0">-->
+<!--                    <div class="icon">-->
+<!--                        <i class='bx bx-tachometer'></i>-->
+
+<!--                    </div>-->
+<!--                    <span class="link hide">Main</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            &lt;!&ndash;            게임 등록 &ndash;&gt;-->
+<!--            <li class="tooltip-element" data-tooltip="1">-->
+<!--                <a href="/home/user" data-active="1">-->
+<!--                    <div class="icon">-->
+<!--                        <i class='bx bx-folder'></i>-->
+<!--                        <i class='bx bxs-folder'></i>-->
+<!--                    </div>-->
+<!--                    <span class="link hide">게임등록</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            &lt;!&ndash;            요청 리스트 &ndash;&gt;-->
+<!--            <li class="tooltip-element" data-tooltip="2">-->
+<!--                <a href="/home/guest" data-active="2">-->
+<!--                    <div class="icon">-->
+<!--                        <i class='bx bx-message-square-detail'></i>-->
+<!--                        <i class='bx bxs-message-square-detail'></i>-->
+<!--                    </div>-->
+<!--                    <span class="link hide">요청 리스트</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            &lt;!&ndash;        게임 후기 게시판    &ndash;&gt;-->
+<!--            <li class="tooltip-element" data-tooltip="3">-->
+<!--                <a href="/" data-active="3">-->
+<!--                    <div class="icon">-->
+<!--                        <i class='bx bx-bar-chart-square'></i>-->
+<!--                        <i class='bx bxs-bar-chart-square'></i>-->
+<!--                    </div>-->
+<!--                    <span class="link hide">게임 후기 (개발중)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <div class="tooltip">-->
+<!--                <span class="show">Dashboard</span>-->
+<!--                <span>Projects</span>-->
+<!--                <span>Messages</span>-->
+<!--                <span>Analytics</span>-->
+<!--            </div>-->
+<!--        </ul>-->
+
+
+<!--        &lt;!&ndash; ........................................................... &ndash;&gt;-->
+<!--        <h4 class="hide">Shortcuts</h4>-->
+
+<!--        <ul>-->
+<!--            <li class="tooltip-element" data-tooltip="0">-->
+<!--                <a href="#" data-active="4">-->
+<!--                    <div class="icon">-->
+<!--                        <i class='bx bx-notepad'></i>-->
+<!--                        <i class='bx bxs-notepad'></i>-->
+<!--                    </div>-->
+<!--                    <span class="link hide"> 일정 (개발중) </span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            &lt;!&ndash; <li class="tooltip-element" data-tooltip="1">-->
+<!--              <a href="#" data-active="5">-->
+<!--                <div class="icon">-->
+<!--                  <i class='bx bx-help-circle'></i>-->
+<!--                  <i class='bx bxs-help-circle'></i>-->
+<!--                </div>-->
+<!--                <span class="link hide">Help</span>-->
+<!--              </a>-->
+<!--            </li>-->
+
+<!--            <li class="tooltip-element" data-tooltip="2">-->
+<!--              <a href="#" data-active="6">-->
+<!--                <div class="icon">-->
+<!--                  <i class='bx bx-cog'></i>-->
+<!--                  <i class='bx bxs-cog'></i>-->
+<!--                </div>-->
+<!--                <span class="link hide">Settings</span>-->
+<!--              </a>-->
+<!--            </li>-->
+<!--          &ndash;&gt;-->
+
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    <div class="sidebar-footer">-->
+<!--        <a href="#" class="account tooltip-element" data-tooltip="0">-->
+<!--            <i class='bx bx-user'></i>-->
+<!--        </a>-->
+<!--        <div class="admin-user tooltip-element" data-tooltip="1">-->
+<!--            <div class="admin-profile hide">-->
+<!--                &lt;!&ndash; <img src="./img/face-1.png" alt=""> &ndash;&gt;-->
+<!--                <div class="admin-info">-->
+<!--                    <h3>John Doe</h3>-->
+<!--                    <h5>Admin</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; <a href="#" class="log-out">-->
+<!--              <i class='bx bx-log-out'></i>-->
+<!--            </a> &ndash;&gt;-->
+
+
+<!--            <form th:action="@{/logout}" method="get" class="log-out">-->
+<!--                <a class="bx bx-log-out" name="registration" type="Submit" th:action="@{/logout}" ></a>-->
+<!--            </form>-->
+
+<!--        </div>-->
+
+<!--        &lt;!&ndash;        <span th:text="${username}" class="text-success">Leo</span>&ndash;&gt;-->
+
+<!--        <div class="tooltip">-->
+<!--            <span class="show" th:text="${username}">John Doe</span>-->
+<!--            <span>Logout</span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--    <div class="container-fluid">-->
+<!--        <div class="pt-5 mt-5 text-center">-->
+<!--            <i class="fas fa-users-cog fa-7x my-5 text-danger"></i>-->
+<!--            <form action="/home.html" th:action="@{/home}">-->
+<!--                <button class="btn btn-lg btn-info mb-5">Home</button>-->
+<!--            </form>-->
+<!--            <h4 class="text-light">Content Available Only <span class="text-danger">Admin</span> Role</h4>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--&lt;!&ndash; Javascript of Bootstrap  &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+
+
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
+<!--        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"-->
+<!--        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"-->
+<!--        crossorigin="anonymous"></script>-->
+
+<!--<script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>-->
+<!--<script src="/js/app.js" async></script>-->
+
+
+<!--</body>-->
+<!--</html>-->
