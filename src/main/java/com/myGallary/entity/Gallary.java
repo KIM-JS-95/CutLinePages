@@ -29,7 +29,6 @@ public class Gallary extends TimeEntity {
 //    @NotBlank
 //    private String link;
 
-
     @NotBlank
     private String username;
 

@@ -96,7 +96,7 @@
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide">게임 후기 (개발중)</span>
+                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
                 </a>
             </li>
 
@@ -160,9 +160,6 @@
                             <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-dark"style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
                             <button sec:authorize="hasRole('ADMIN')"  type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
 
-
-                            <b>Authenticated user role:</b>
-                            <div sec:authentication="principal.authorities"></div>
 
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -20,9 +20,6 @@
 
 
 <body>
-
-<!-- 사이트 바 -->
-<!--<div th:replace="/home/fragment/side.html :: fragment-nav"></div>-->
 
 <nav>
     <br>
@@ -79,7 +76,7 @@
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide">게임 후기 (개발중)</span>
+                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
                 </a>
             </li>
 
@@ -99,7 +96,7 @@
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide">게임 후기 (개발중)</span>
+                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
                 </a>
             </li>
 
@@ -187,8 +184,8 @@
                             <div class="mb-5"></div>
 
 
-<!--                            <button type="button" class="btn btn-dark"style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>-->
-<!--                            <button type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>-->
+                            <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-dark"style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
+                            <button sec:authorize="hasRole('ADMIN')"  type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
 
 
 
@@ -204,7 +201,20 @@
     </div>
 </div>
 
-<div th:replace="/home/fragment/footer.html :: fragment-footer"></div>
+<!-- Javascript of Bootstrap  -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>
+<script src="/js/app.js" async></script>
+<script src="/js/gallary.js" async></script>
 
 </body>
 

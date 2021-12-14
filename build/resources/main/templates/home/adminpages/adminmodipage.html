@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -20,7 +20,6 @@
 
 <body>
 
-<!--<div th:replace="/home/fragment/side.html :: fragment-nav"></div>-->
 <nav>
     <br>
     <div class="sidebar-top">
@@ -96,7 +95,7 @@
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide">게임 후기 (개발중)</span>
+                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
                 </a>
             </li>
 
@@ -124,6 +123,7 @@
         </form>
     </div>
 </nav>
+
 <div class="container-fluid p-5 mt-5 text-center">
 
     <div class="text-center">
