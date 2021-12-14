@@ -2,6 +2,7 @@ package com.myGallary.service;
 
 import com.myGallary.Repository.ReviewRepository;
 import com.myGallary.entity.Review;
+import com.myGallary.entity.ReviewDTO;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.slf4j.Logger;
@@ -14,6 +15,9 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 
 /*
@@ -33,8 +37,32 @@ class ReviewServiceTest {
 
     @Test
     public void getBoardlist() {
-       List<Review> reviews = reviewRepository.findAll();
 
+        // given
+        Review review = Review.builder()
+                .id(1L)
+                .title("123")
+                .content("123")
+                .link("123")
+                .username("123")
+                .build();
+
+        reviewRepository.save(review);
+
+        // when
+        List<Review> mockreview = reviewRepository.findAll();
+
+        Review review1 = mockreview.get(0);
+        // then
+        assertThat(review1.getTitle(),is("123"));
+
+    }
+
+    @Test
+    public void realdb() {
+
+
+       List<Review> reviews = reviewRepository.findAll();
        assertThat(reviews.get(0).getTitle(),is("[#1] Last Light 후기"));
 
     }
