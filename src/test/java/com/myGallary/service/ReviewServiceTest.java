@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
 @AutoConfigureTestDatabase 를 추가해 주세요
  */
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@WithMockUser(username = "admin", password = "wotjd2487", roles = {"ROLE_ADMIN"})
 class ReviewServiceTest {
 
@@ -60,7 +60,6 @@ class ReviewServiceTest {
 
     @Test
     public void realdb() {
-
 
        List<Review> reviews = reviewRepository.findAll();
        assertThat(reviews.get(0).getTitle(),is("[#1] Last Light 후기"));

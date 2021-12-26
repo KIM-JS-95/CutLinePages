@@ -26,11 +26,11 @@ public class Gallary extends TimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-//    @NotBlank
-//    private String link;
-
     @NotBlank
     private String username;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_ID")
+    private Account account;
 
 }

@@ -8,13 +8,16 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Getter
 @Setter
+@Data
 @Table(name = "account", uniqueConstraints = {@UniqueConstraint(name = "NAME_EMAIL_UNIQUE", columnNames = {"USERNAME", "EMAIL"})})
 public class Account {
 
@@ -51,6 +54,15 @@ public class Account {
 
     @CreationTimestamp
     private Date regDate;
+
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Gallary> gallaries = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
+
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_role",

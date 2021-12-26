@@ -143,8 +143,6 @@ public class GallaryService {
                 .id(board.getId())
                 .title(board.getTitle())
                 .content(board.getContent())
-//                .link(board.getLink())
-                .username(board.getUsername())
                 .createDate(board.getCreateDate())
                 .build();
     }

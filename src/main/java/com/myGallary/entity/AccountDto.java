@@ -2,6 +2,7 @@ package com.myGallary.entity;
 
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Builder
 @Getter
+@Data
 public class AccountDto {
 
 

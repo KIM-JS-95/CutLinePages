@@ -47,7 +47,7 @@ public class GallaryRestController {
             log.error("[CutLine]" + e.getMessage());
         }
 
-        gallary.setUsername(account.getUsername());
+        //gallary.setUsername(account.getUsername());
 
         gallaryService.create(gallary);
 
