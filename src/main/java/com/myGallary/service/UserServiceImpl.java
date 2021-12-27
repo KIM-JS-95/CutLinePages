@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void setUser(Account user) throws Exception {
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         user.setIsActive(true);

@@ -15,9 +15,10 @@ import java.util.Set;
 
 
 @Entity
-@Getter
-@Setter
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "account", uniqueConstraints = {@UniqueConstraint(name = "NAME_EMAIL_UNIQUE", columnNames = {"USERNAME", "EMAIL"})})
 public class Account {
 
@@ -52,8 +53,8 @@ public class Account {
     @Column(nullable = false)
     private Boolean isActive;
 
-    @CreationTimestamp
-    private Date regDate;
+//    @CreationTimestamp
+//    private Date regDate;
 
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
@@ -69,5 +70,15 @@ public class Account {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
+
+
+
+    public void addGallary(Gallary gallary){
+        this.gallaries.add(gallary);
+
+        if(gallary.getAccount() != this){
+            gallary.setAccount(this);
+        }
+    }
 
 }

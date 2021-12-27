@@ -51,6 +51,7 @@ public class GallaryController {
         Gallary gallary = gallaryService.findIndex(index).orElseThrow(()
                 -> new IllegalArgumentException("error"));
 
+
         model.addAttribute("details", gallary);
         return "home/gallary/gallarydetail";
     }

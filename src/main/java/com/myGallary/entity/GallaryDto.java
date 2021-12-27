@@ -20,9 +20,14 @@ public class GallaryDto {
 
     private String content;
 
-    private String link;
-
     private String username;
 
     private LocalDateTime createDate;
+
+    private  int count;
+
+    private String link;
+
+    private Gallary gallary;
+
 }

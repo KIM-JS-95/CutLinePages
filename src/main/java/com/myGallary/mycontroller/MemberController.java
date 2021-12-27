@@ -154,6 +154,7 @@ public class MemberController {
         } catch (Exception e) {
             log.error("[CutLine]" + e.getMessage());
         }
+
         return account;
     }
 
