@@ -29,8 +29,8 @@ public class Gallary extends TimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-//    @NotNull
-//    private String link;
+    @NotNull
+    private String link;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_ID")

@@ -151,6 +151,7 @@ public class GallaryService {
                 .title(board.getTitle())
                 .content(board.getContent())
                 .username(board.getAccount().getUsername())
+                .link(board.getLink())
                 .count(board.getCount())
                 .build();
     }
