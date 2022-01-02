@@ -31,6 +31,8 @@ public class Review extends TimeEntity {
     @NotBlank
     private String username;
 
+    private int count;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_ID")
     private Account account;

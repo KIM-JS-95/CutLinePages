@@ -121,10 +121,6 @@ public class GallaryService {
         gallaryRepository.deleteById(id);
     }
 
-    // 조회
-    public void view(Long id) {
-        gallaryRepository.findById(id);
-    }
 
     // 검색
     public List<Gallary> search(String title) {
