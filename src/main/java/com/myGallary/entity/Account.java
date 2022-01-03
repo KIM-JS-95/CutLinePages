@@ -72,7 +72,6 @@ public class Account {
     private Set<Role> roles;
 
 
-
     public void addGallary(Gallary gallary){
         this.gallaries.add(gallary);
 

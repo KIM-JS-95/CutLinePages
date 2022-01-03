@@ -1,27 +1,33 @@
 package com.myGallary.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class GallaryReply {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-
-    @Column(length =1000, nullable = false)
+   // @Column(length =1000, nullable = false)
     private String comment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "GALLARY_ID")
     private Gallary gallary;
 
+    public void setGallary(Gallary gallary){
+        this.gallary=gallary;
+
+        if(!gallary.getGallaryReply().contains(this)){
+            gallary.getGallaryReply().add(this);
+        }
+    }
 }

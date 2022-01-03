@@ -64,7 +64,7 @@ $('#update').on('click', function(){
       var id=document.getElementById("id1").innerText;
 
     var data={
-             title: $('#title'),
+             title: $('#title').val(),
              content: $('#content').val()
          };
 

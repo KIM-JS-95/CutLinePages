@@ -3,18 +3,21 @@ package com.myGallary.mycontroller;
 
 import com.myGallary.entity.GallaryReply;
 import com.myGallary.service.ReplyService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 public class ReplyRestController {
 
-    private ReplyService replyService;
+    @Autowired
+    ReplyService replyService;
 
-    @PostMapping("/gallery/reply")
-    public void ReplyCreate(@RequestBody GallaryReply gallaryReply){
+    //@PostMapping("/gallery/reply/{id}")
+    @RequestMapping(value = "/gallary/reply/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+    public void ReplyCreate(@PathVariable Long id,
+                            @RequestBody GallaryReply gallaryReply) {
 
-        replyService.createReply(gallaryReply);
+        replyService.createReply(id,gallaryReply);
     }
 }
