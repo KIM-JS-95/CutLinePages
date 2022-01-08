@@ -26,12 +26,7 @@ public class Gallary extends TimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-//    @NotBlank
-//    private String link;
-
-
     @NotBlank
     private String username;
-
 
 }
