@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -94,7 +94,11 @@
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
+<<<<<<< HEAD
                     <span class="link hide">게임 후기 작성</span>
+=======
+                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
+>>>>>>> dev
                 </a>
             </li>
 
@@ -170,6 +174,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

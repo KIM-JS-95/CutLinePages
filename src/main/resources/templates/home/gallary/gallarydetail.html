@@ -11,8 +11,9 @@
 
     <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/commentstyle.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6493472183563648"
             crossorigin="anonymous"></script>
@@ -20,7 +21,6 @@
 
 
 <body>
-
 <nav>
     <br>
     <div class="sidebar-top">
@@ -124,87 +124,146 @@
     </div>
 </nav>
 
-<div class="container-fluid p-5 mt-5 text-center">
+<!-- 본문 -->
+<div  class="container-fluid" style="width: 60%;">
 
-    <div class= "form-group form-group-lg col-sm-10"style="font-size: 20px;">
+    <div style="font-size: 20px;" class= "text-left">
+        <div class="row">
+            <div class="col-xl-12">
 
-        <div class="container-fluid p-5 mt-5 text-left">
-            <div class="row">
+                <div class="mb-5"></div>
+                <div class="mb-5"></div>
 
-                <div class="col-md-3 col-xl-2"></div>
-                <div class="col-md-6 col-xl-10">
-
-                    <div class="text-center">
-                        <i class="fab fa-twitch fa-5x" style="color: blueviolet; margin-right: 50px;"></i>
-                        <i class="fab fa-youtube fa-5x" style="color: red; margin-right: 50px;"></i>
-                        <i class="fab fa-steam fa-5x" style="color: white; margin-right: 50px;"></i>
-                        <i class="fas fa-gamepad fa-5x" style="color: gainsboro; margin-right: 50px;"></i>
-                    </div>
-
-                    <div class="mb-5"></div>
-                    <div class="mb-5"></div>
-
-                    <div class="card signup-form border-0">
-                        <div class="card-body">
+                <div class="card signup-form border-0">
+                    <div class="card-body">
 
 
-<!--                            이미지 표현 부분-->
-<!--                            <div style="text-align : center;">-->
-<!--                                <img th:src="${gallery.imgFullPath}" style="width: 960px; height: 300px;">-->
-<!--                            </div>-->
+                        <!--                            이미지 표현 부분-->
+                        <!--                            <div style="text-align : center;">-->
+                        <!--                                <img th:src="${gallery.imgFullPath}" style="width: 960px; height: 300px;">-->
+                        <!--                            </div>-->
 
-                            <form>
-
-
-                                <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5 text-center">
-                                    <text id="title" th:text = "${details.title}" >title</text>
-                                </h3>
-
-                                글번호
-                                <div id="id1", th:text = "${details.id}">1</div>
-
-                                <div class="form-group" style="font-size: 25px;">
-                                    <td id="content" th:text = "${details.content}"></td>
-                                </div>
+                        <form>
 
 
-                                <div class="mb-5"></div>
+                            <h3 style="font-size: 50px;" class="text-white text-uppercase mb-5 text-center">
+                                <text id="title" th:text = "${details.title}" >title</text>
+                            </h3>
+
+                            글번호
+                            <div id="id1", th:text = "${details.id}">1</div>
+
+                            <div class="form-group" style="font-size: 25px;">
+                                <td id="content" th:text = "${details.content}"></td>
+                            </div>
 
 
+                            <div class="mb-5"></div>
+
+
+                            <hr width =100% color="D30505" size="100px" style="height: 2px; " />
+                            <label style="color: rgb(241, 110, 110); font-size: 30px; font-weight: 500;">Game Download link</label>
+                            <!--                                <div class="form-group" style="font-size: 25px;">-->
+                            <!--                                    <td><a th:href="@{${details.link}}" th:text="${details.link}" id="link"></a></td>-->
+                            <!--                                </div>-->
+
+                        </form>
+
+<<<<<<< HEAD
                                 <hr width =100% color="D30505" size="100px" style="height: 2px; " />
                                 <label style="color: rgb(241, 110, 110); font-size: 30px; font-weight: 500;">Game Download link</label>
                                 <div class="form-group" style="font-size: 25px;">
                                     <td><a th:href="@{${details.link}}" th:text="${details.link}" id="link"></a></td>
                                 </div>
+=======
+>>>>>>> dev
 
-                            </form>
-
-
-                            <div class="mb-5"></div>
-                            <div class="mb-5"></div>
-
-
-                            <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-dark"style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
-                            <button sec:authorize="hasRole('ADMIN')"  type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
+                        <div class="mb-5"></div>
+                        <div class="mb-5"></div>
 
 
-
-                        </div>
+                        <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-dark"style="position:relative; left: 0px; font-size: 15px;" id="modipage">수정</button>
+                        <button sec:authorize="hasRole('ADMIN')"  type="button" class="btn btn-dark" style="position:relative; left: 0px; font-size: 15px;" id="delete">삭제</button>
                     </div>
                 </div>
-
-                <div class="col-md-3 col-xl-2"></div>
-
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
 
+
+<!-- 댓글 -->
+<div class="container-fluid p-5" style="width: 650px;">
+    <form>
+    <div class="bg-light p-2">
+        <div class="d-flex flex-row align-items-start">
+            <img class="rounded-circle" src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" width="40">
+
+                <textarea id="replycreate" type="text" class="form-control ml-1 shadow-none textarea"></textarea>
+
+                <div class="mt-2 text-right">
+                    <button id="replybutton" class="btn btn-primary btn-sm shadow-none"
+                            style="position:relative; left: 0px; font-size: 15px;" type="button">Post comment</button>
+                </div>
+
+        </div>
+    </div>
+</form>
+    <ul id="comments-list" class="comments-list" style="width: 600px;">
+
+        <li th:each="reply : ${replys}">
+            <div class="comment-main-level" >
+                <!-- Avatar -->
+                <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+
+                <!-- Contenedor del Comentario -->
+                <div class="comment-box" style="width: 510px;">
+                    <div class="comment-head">
+
+                        <h6 class="comment-name by-author">
+                            <td id="username">sdsd</td>
+                        </h6>
+
+                        <i class="fa fa-reply"></i>
+                        <i class="fa fa-heart"></i>
+                    </div>
+
+                    <div class="comment-content">
+                        <tr id="comment" th:text = "${reply.comment}"></tr>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Respuestas de los comentarios -->
+<!--            <ul class="comments-list reply-list">-->
+<!--                <li>-->
+<!--                    &lt;!&ndash; Avatar &ndash;&gt;-->
+<!--                    <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>-->
+<!--                    &lt;!&ndash; Contenedor del Comentario &ndash;&gt;-->
+<!--                    <div class="comment-box" style="width: 440px;">-->
+<!--                        <div class="comment-head">-->
+<!--                            <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>-->
+<!--                            <span>hace 10 minutos</span>-->
+<!--                            <i class="fa fa-reply"></i>-->
+<!--                            <i class="fa fa-heart"></i>-->
+<!--                        </div>-->
+<!--                        <div class="comment-content">-->
+<!--                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+        </li>
+
+    </ul>
+</div>
+
+
+
+
 <!-- Javascript of Bootstrap  -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -215,6 +274,7 @@
 <script src="/lib/fontawesome-free-5.12.1-web/js/all.js" crossorigin="anonymous"></script>
 <script src="/js/app.js" async></script>
 <script src="/js/gallary.js" async></script>
+<script src="/js/reply.js" async></script>
 
 </body>
 

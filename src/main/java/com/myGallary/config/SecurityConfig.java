@@ -62,8 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login", "/registration","/home/guest", "/adminpages/review","/adminpages/view/{id}"
                         ,"/gallary/view/{id}","/adminpages/review/search").permitAll()
 
-                .antMatchers("/home/**","/adminpages/reviewcreate").hasAuthority(ERole.ADMIN.getValue()) // admin
-                .antMatchers( "/home/user").hasAuthority(ERole.MANAGER.getValue()) // user
+                .antMatchers("/home/**","/adminpages/reviewcreate","/gallery/reply/{id}").hasAuthority(ERole.ADMIN.getValue()) // admin
+                .antMatchers( "/home/user","/gallery/reply/{id}").hasAuthority(ERole.MANAGER.getValue()) // user
                 //.antMatchers("/home/guest").hasAuthority(ERole.GUEST.getValue()) // guest
                 .anyRequest().authenticated()
 

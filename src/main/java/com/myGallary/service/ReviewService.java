@@ -95,6 +95,7 @@ public class ReviewService {
 
     // 겔러리 한가지 데이터 출력
     public Optional<Review> findIndex(Long index) {
+        reviewRepository.updateCount(index);
         return reviewRepository.findById(index);
     }
 
