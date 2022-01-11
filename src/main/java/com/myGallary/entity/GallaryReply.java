@@ -23,6 +23,18 @@ public class GallaryReply {
     @JoinColumn(name = "GALLARY_ID")
     private Gallary gallary;
 
+    @ManyToOne
+    @JoinColumn(name = "ACCOUNT_ID")
+    private Account account;
+
+
+    public void setAccount(Account account){
+        this.account=account;
+        if(!account.getGallaryReplies().contains(this)){
+            account.getGallaryReplies().add(this);
+        }
+    }
+
     public void setGallary(Gallary gallary){
         this.gallary=gallary;
 

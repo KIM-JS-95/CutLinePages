@@ -3,6 +3,7 @@ package com.myGallary.service;
 
 import com.myGallary.Repository.GallaryReplyRepository;
 import com.myGallary.Repository.GallaryRepository;
+import com.myGallary.entity.Account;
 import com.myGallary.entity.Gallary;
 import com.myGallary.entity.GallaryReply;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +29,9 @@ public class ReplyService {
         return gallaryReply;
     }
 
-    public void createReply(Long id, GallaryReply gallaryReply){
+    public void createReply(Long id, GallaryReply gallaryReply, Account account){
 
+        // TODO: 불러온 데이터 정보를
         Gallary gallary = gallaryRepository.findById(id).orElse(null);
 
         gallaryReply.setGallary(gallary);
