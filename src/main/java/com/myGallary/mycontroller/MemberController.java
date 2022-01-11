@@ -127,7 +127,7 @@ public class MemberController {
 
     //	게임 리스트 확인 화면
     @GetMapping("/home/guest")
-    public String guestHome(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
+    public String gallaryboard(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
 
         List<GallaryDto> gallaryDtos = gallaryService.getBoardlist(pageNum);
         Integer[] pagelist = gallaryService.getPageList(pageNum);
@@ -154,6 +154,7 @@ public class MemberController {
         } catch (Exception e) {
             log.error("[CutLine]" + e.getMessage());
         }
+
         return account;
     }
 

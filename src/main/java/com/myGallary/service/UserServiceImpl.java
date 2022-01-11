@@ -4,6 +4,7 @@ import com.myGallary.Repository.AccountRepository;
 import com.myGallary.Repository.ERole;
 import com.myGallary.Repository.RoleRepository;
 import com.myGallary.entity.Account;
+import com.myGallary.entity.AccountDto;
 import com.myGallary.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,8 +45,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Account setUser(Account user) throws Exception {
-
+    public void setUser(Account user) throws Exception {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         user.setIsActive(true);
@@ -75,6 +75,9 @@ public class UserServiceImpl implements UserService {
 
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
-        return accountRepository.save(user);
+
+        accountRepository.save(user);
+
+        // return accountRepository.save(user);
     }
 }

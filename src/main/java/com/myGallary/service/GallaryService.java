@@ -2,6 +2,7 @@ package com.myGallary.service;
 
 
 import com.myGallary.Repository.GallaryRepository;
+import com.myGallary.entity.Account;
 import com.myGallary.entity.Gallary;
 import com.myGallary.entity.GallaryDto;
 import lombok.RequiredArgsConstructor;
@@ -96,6 +97,7 @@ public class GallaryService {
 
     // 겔러리 한가지 데이터 출력
     public Optional<Gallary> findIndex(Long index) {
+        gallaryRepository.updateCount(index);
         return gallaryRepository.findById(index);
     }
 
@@ -119,10 +121,6 @@ public class GallaryService {
         gallaryRepository.deleteById(id);
     }
 
-    // 조회
-    public void view(Long id) {
-        gallaryRepository.findById(id);
-    }
 
     // 검색
     public List<Gallary> search(String title) {
@@ -132,8 +130,13 @@ public class GallaryService {
 
 
     // 게시글 저장
-    public Gallary create(Gallary gallary) throws IOException {
+    public Gallary create(Gallary gallary, Account account) throws IOException {
 
+        System.out.println(gallary.getTitle());
+        System.out.println(account.getUsername());
+
+        gallary.setAccount(account);
+        account.addGallary(gallary);
 
         return gallaryRepository.save(gallary);
     }
@@ -143,9 +146,9 @@ public class GallaryService {
                 .id(board.getId())
                 .title(board.getTitle())
                 .content(board.getContent())
-//                .link(board.getLink())
-                .username(board.getUsername())
-                .createDate(board.getCreateDate())
+                .username(board.getAccount().getUsername())
+                .link(board.getLink())
+                .count(board.getCount())
                 .build();
     }
 

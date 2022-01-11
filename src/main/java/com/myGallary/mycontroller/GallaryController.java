@@ -3,6 +3,7 @@ package com.myGallary.mycontroller;
 
 import com.myGallary.entity.*;
 import com.myGallary.service.GallaryService;
+import com.myGallary.service.ReplyService;
 import com.myGallary.service.ReviewService;
 import com.myGallary.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,9 @@ public class GallaryController {
     private UserService userService;
 
     @Autowired
+    private ReplyService replyService;
+
+    @Autowired
     private ReviewService reviewService;
 
     protected Logger log = LoggerFactory.getLogger(this.getClass());
@@ -51,7 +55,10 @@ public class GallaryController {
         Gallary gallary = gallaryService.findIndex(index).orElseThrow(()
                 -> new IllegalArgumentException("error"));
 
+        List<GallaryReply> gallaryReply = replyService.findAll();
+
         model.addAttribute("details", gallary);
+        model.addAttribute("replys", gallaryReply);
         return "home/gallary/gallarydetail";
     }
 
@@ -139,8 +146,6 @@ public class GallaryController {
         Review review = reviewService.findIndex(index).orElseThrow(()
                 -> new IllegalArgumentException("error"));
 
-
-
         Account account = Getuser();
         if (account != null) {
             nick(model, account.getUsername());
@@ -177,6 +182,7 @@ public class GallaryController {
         }
         return account;
     }
+
 
     public Model nick(Model model, String nickname) {
         model.addAttribute("username", "" + nickname);

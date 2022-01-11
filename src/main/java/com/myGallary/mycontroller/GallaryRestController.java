@@ -22,7 +22,6 @@ import java.util.List;
 // 모든 게시글은 @Controller에서 담당
 
 @RestController
-
 public class GallaryRestController {
 
     protected Logger log = LoggerFactory.getLogger(this.getClass());
@@ -47,9 +46,7 @@ public class GallaryRestController {
             log.error("[CutLine]" + e.getMessage());
         }
 
-        gallary.setUsername(account.getUsername());
-
-        gallaryService.create(gallary);
+        gallaryService.create(gallary, account);
 
     }
 
