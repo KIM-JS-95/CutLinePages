@@ -85,22 +85,20 @@
 
         <!-- ........................................................... -->
 
-        <h4 class="hide">Shortcuts</h4>
-
-        <ul>
-
-            <!--        관리자 후기 작성   -->
-            <li class="tooltip-element" data-tooltip="3">
+        <!--        관리자 후기 작성   -->
+        <div sec:authorize="hasRole('ADMIN')">
+            <h4 class="hide">Shortcuts</h4>
+            <li class="tooltip-element" data-tooltip="3" >
                 <a href="/adminpages/reviewcreate" data-active="3">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
+                    <span class="link hide">게임 후기 작성</span>
                 </a>
             </li>
+        </div>
 
-        </ul>
     </div>
 
     <div class="sidebar-footer">
@@ -187,7 +185,8 @@
 
 <!-- 댓글 -->
 <div class="container-fluid p-5" style="width: 650px;">
-    <form>
+
+    <form sec:authorize="hasAnyRole('ADMIN','MANAGER')">
     <div class="bg-light p-2">
         <div class="d-flex flex-row align-items-start">
             <img class="rounded-circle" src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" width="40">
@@ -201,20 +200,23 @@
 
         </div>
     </div>
-</form>
+    </form>
+
     <ul id="comments-list" class="comments-list" style="width: 600px;">
 
         <li th:each="reply : ${replys}">
             <div class="comment-main-level" >
                 <!-- Avatar -->
-                <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                <div class="comment-avatar">
+                    <img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt="">
+                </div>
 
                 <!-- Contenedor del Comentario -->
                 <div class="comment-box" style="width: 510px;">
                     <div class="comment-head">
 
                         <h6 class="comment-name by-author">
-                            <td id="username">sdsd</td>
+                            <td id="username" th:text = "${reply.account.username}"> Nick name </td>
                         </h6>
 
                         <i class="fa fa-reply"></i>

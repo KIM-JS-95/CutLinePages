@@ -2,6 +2,7 @@ package com.myGallary.entity;
 
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "gallary")
@@ -22,6 +22,7 @@ public class Gallary extends TimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @ColumnDefault("0")
     private int count;
 
     @NotBlank
