@@ -23,7 +23,7 @@ public class GallaryReply {
     @JoinColumn(name = "GALLARY_ID")
     private Gallary gallary;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_ID")
     private Account account;
 

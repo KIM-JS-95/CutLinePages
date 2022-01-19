@@ -35,6 +35,7 @@ public class GallaryRestController {
     // 게시글 작성
     @PostMapping("/gallary/create")
     private void create(@RequestBody Gallary gallary) throws IOException {
+    System.out.println(gallary.getTitle());
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Account account = null;
