@@ -2,10 +2,18 @@ package com.myGallary.mycontroller;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.*;
+import com.google.api.services.youtube.model.Channel;
+import com.google.api.services.youtube.model.ChannelListResponse;
+import com.google.api.services.youtube.model.PlaylistItem;
+import com.google.api.services.youtube.model.PlaylistItemListResponse;
 import com.google.common.collect.Lists;
+import com.myGallary.Repository.YoutubeTableRepository;
+import com.myGallary.entity.YoutubeTable;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,7 +24,11 @@ import java.util.List;
  *
  * @author Jeremy Walker
  */
+
+//TODO : admin  페이지에서 버튼 클릭하면 DB 초기화 방식
+@RestController
 public class MyUploads {
+
 
     /**
      * Define a global instance of a Youtube object, which will be used
@@ -32,7 +44,8 @@ public class MyUploads {
      *
      * @param args command line args (not used).
      */
-    public static void main(String[] args) {
+    @PostMapping("/youtube")
+    public void YoutubeCrowling(String[] args) {
 
         // This OAuth 2.0 access scope allows for read-only access to the
         // authenticated user's account, but not other types of account access.
@@ -96,6 +109,8 @@ public class MyUploads {
 
                 // Prints information about the results.
                 prettyPrint(playlistItemList.size(), playlistItemList.iterator());
+
+
             }
 
         } catch (GoogleJsonResponseException e) {
@@ -115,7 +130,13 @@ public class MyUploads {
      *
      * @param iterator of Playlist Items from uploaded Playlist
      */
-    private static void prettyPrint(int size, Iterator<PlaylistItem> playlistEntries) {
+
+
+    @Autowired
+     YoutubeTableRepository youtubeTableRepository;
+
+    static List<YoutubeTable> list = new ArrayList<>();
+    private  void prettyPrint(int size, Iterator<PlaylistItem> playlistEntries) {
         System.out.println("=============================================================");
         System.out.println("\t\tTotal Videos Uploaded: " + size);
         System.out.println("=============================================================\n");
@@ -123,11 +144,18 @@ public class MyUploads {
         while (playlistEntries.hasNext()) {
             PlaylistItem playlistItem = playlistEntries.next();
 
-            System.out.println(" video name  = " + playlistItem.getSnippet().getTitle());
-            System.out.println(" video id    = " + playlistItem.getContentDetails().getVideoId());
-            System.out.println(" upload date = " + playlistItem.getSnippet().getPublishedAt());
-            System.out.println(" upload url = " + playlistItem.getSnippet().getThumbnails().getMedium().getUrl());
-            System.out.println("\n-------------------------------------------------------------\n");
+            YoutubeTable youtubeTable= YoutubeTable.builder()
+                    .VideoId(playlistItem.getContentDetails().getVideoId())
+                    .Title(playlistItem.getSnippet().getTitle())
+                    .build();
+
+            list.add(youtubeTable);
+//            System.out.println(" video name  = " + playlistItem.getSnippet().getTitle());
+//            System.out.println(" video id    = " + playlistItem.getContentDetails().getVideoId());
+//            System.out.println(" upload date = " + playlistItem.getSnippet().getPublishedAt());
+//            System.out.println("\n-------------------------------------------------------------\n");
         }
+        youtubeTableRepository.saveAll(list);
+
     }
 }

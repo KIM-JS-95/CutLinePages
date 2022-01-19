@@ -4,12 +4,10 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 
-import com.myGallary.entity.Account;
-import com.myGallary.entity.Gallary;
-import com.myGallary.entity.GallaryDto;
-import com.myGallary.entity.Review;
+import com.myGallary.entity.*;
 import com.myGallary.service.GallaryService;
 import com.myGallary.service.UserService;
+import com.myGallary.service.YouTubeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,15 +97,22 @@ public class MemberController {
     @Autowired
     private GallaryService gallaryService;
 
-    @GetMapping("/home")
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        return "home/admin";
+    }
+
+    @Autowired
+    private YouTubeService youTubeService;
+    @GetMapping("/")
     public String home(Model model) {
-
-        // TODO: 현재 유저의 정보 가져오기
         Account account=Getuser();
-
-        // TODO: 유저 이름 side.html으로 보내기
         nick(model,account.getUsername());
 
+        List<YoutubeTable> YouTubeList= youTubeService.getVideoInfo();
+
+        model.addAttribute("youtubes", YouTubeList);
+         System.out.println(YouTubeList.size());
         return "index";
     }
 

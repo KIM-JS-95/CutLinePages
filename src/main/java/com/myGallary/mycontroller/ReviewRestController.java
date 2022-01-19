@@ -22,7 +22,6 @@ public class ReviewRestController {
     @PostMapping("/adminpages/create")
     @JsonProperty
     private void create(@RequestBody Review review){
-
         reviewService.create(review);
     }
 
