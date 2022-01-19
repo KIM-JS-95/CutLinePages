@@ -63,11 +63,9 @@ public class UserServiceImpl implements UserService {
          */
 
         else if(user.getUsercode().equals(usercode)) {
-            System.out.println("user로 들어왔난요?>");
             userRole = roleRepository.findByRole(ERole.MANAGER.getValue());
         }
         else {
-            System.out.println("guest로 들어왔난요?>");
             userRole = roleRepository.findByRole(ERole.GUEST.getValue());
         }
 

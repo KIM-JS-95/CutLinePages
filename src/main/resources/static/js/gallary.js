@@ -1,14 +1,13 @@
 $('#save').on('click', function () {
     var data={
              title: $('#title').val(),
-             content: $('#content').val()
-//             link: $('#link').val()
+             content: $('#content').val(),
+             link: $('#link').val()
          };
 
      $.ajax({
          type: 'POST',
          url: '/gallary/create',
-         dataType: 'json',
          contentType:'application/json; charset=utf-8',
          data: JSON.stringify(data)
      }).done(function(){

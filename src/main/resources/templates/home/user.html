@@ -84,22 +84,19 @@
 
         <!-- ........................................................... -->
 
-        <h4 class="hide">Shortcuts</h4>
-
-        <ul>
-
-            <!--        관리자 후기 작성   -->
-            <li class="tooltip-element" data-tooltip="3">
+        <!--        관리자 후기 작성   -->
+        <div sec:authorize="hasRole('ADMIN')">
+            <h4 class="hide">Shortcuts</h4>
+            <li class="tooltip-element" data-tooltip="3" >
                 <a href="/adminpages/reviewcreate" data-active="3">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span sec:authorize="hasRole('ADMIN')" class="link hide">게임 후기 작성</span>
+                    <span class="link hide">게임 후기 작성</span>
                 </a>
             </li>
-
-        </ul>
+        </div>
     </div>
 
     <div class="sidebar-footer">
@@ -153,17 +150,11 @@
                                            style=height:200px;/></textarea>
                                 </div>
 
-                                <!-- Image upload -->
-<!--                                <form id="form">-->
-<!--                                <div class="form-group">-->
-<!--                                    <input type="file" name="filename" id="file"/>-->
-<!--                                </div>-->
-<!--                                </form>-->
 
                                 <!-- LINK -->
-<!--                                <div class="form-group">-->
-<!--                                    <input id="link" type="text" placeholder="LINK" class="form-control signup-text"/>-->
-<!--                                </div>-->
+                                <div class="form-group">
+                                    <input id="link" type="text" placeholder="LINK" class="form-control signup-text"/>
+                                </div>
 
                                 <!-- submit button -->
                                 <div class="card signup-form border-0">

@@ -55,10 +55,10 @@ public class GallaryController {
         Gallary gallary = gallaryService.findIndex(index).orElseThrow(()
                 -> new IllegalArgumentException("error"));
 
-        List<GallaryReply> gallaryReply = replyService.findAll();
 
         model.addAttribute("details", gallary);
-        model.addAttribute("replys", gallaryReply);
+        model.addAttribute("replys", gallary.getGallaryReply());
+
         return "home/gallary/gallarydetail";
     }
 

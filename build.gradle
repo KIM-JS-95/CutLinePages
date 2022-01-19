@@ -39,7 +39,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.session:spring-session-jdbc'
 
-   implementation "org.springframework.security:spring-security-test"
+    implementation "org.springframework.security:spring-security-test"
     implementation "org.mariadb.jdbc:mariadb-java-client"
     implementation 'mysql:mysql-connector-java'
 
@@ -47,8 +47,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
 
-    // AWS S3
-    //implementation("org.springframework.cloud:spring-cloud-starter-aws:2.0.1.RELEASE")
+    implementation group: 'com.google.oauth-client', name: 'google-oauth-client-jetty', version: '1.20.0'
+    implementation group: 'com.google.apis', name: 'google-api-services-youtube', version: 'v3-rev222-1.25.0'
+    implementation group: 'com.google.http-client', name: 'google-http-client-jackson2', version: '1.41.0'
 }
 
 test {

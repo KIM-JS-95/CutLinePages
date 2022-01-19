@@ -35,6 +35,7 @@ public class ReplyService {
         Gallary gallary = gallaryRepository.findById(id).orElse(null);
 
         gallaryReply.setGallary(gallary);
+        gallaryReply.setAccount(account);
         gallaryReplyRepository.save(gallaryReply);
     }
 }
