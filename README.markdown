@@ -1,8 +1,11 @@
 
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=WELCOM%20TO%20CUTLINEPAGE&fontSize=50&animation=fadeIn&fontAlignY=38&desc=Made%20by%20KIM%20-JS&descAlignY=51&descAlign=70)
+# <center> VER.2 </center>
 
 <div align="center" style='letter-spacing:10px'>
+
+---
 
 ## QR Code
 
@@ -23,6 +26,7 @@
 <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=AMAZONAWS&logoColor=white"/>
 <img src="https://img.shields.io/badge/GRADLE-02303A?style=for-the-badge&logo=GRADLE&logoColor=white"/>
 <img src="https://img.shields.io/badge/SPRINGBOOT-6DB33F?style=for-the-badge&logo=SPRINGBOOT&logoColor=white"/>
+<img src="https://img.shields.io/badge/YOUTUBE_API-FF0000?style=for-the-badge&logo=YOUTUBE&logoColor=white"/>
 
 </div>
 
@@ -47,28 +51,136 @@
 
 ![제목을-입력해주세요_-001 (1)](https://user-images.githubusercontent.com/65659478/143247907-2e7992d2-62db-4935-a7d0-87b87b9a27b5.png)
 
----
+## 변경사항
 
+### 🥳 댓글기능 구현 🥳
+
+게시판 기능의 **완전한 기능을 구현**하고자 추가적으로 Reply(댓글)기능을 추가 한다.
+
+#### Table 추가
+댓글 기능의 경우 게시판 하나당 댓글정보는 여러개가 연결되기 때문에 `@OnetoMany` 양방향 매핑츨 시켜주어 사용하기로 한다.
+
+추가적으로 게시판이 삭제될 경우 매핑되어 있는 댓글 또한 같이 지워질 수 있도록 `cascade`를 All로 지정하여 별도 삭제 기능 추가 없이
+작업이 이루어 질 수 있도록 한다.
+
+단, 추후 Account와 매핑할 경우 `cascade` 기능을 사용하지 않고 **고아 객체**로 만들어 두어야한다.
+
+
+```java
+@OneToMany(mappedBy = "gallary",cascade = CascadeType.ALL)
+    private List<GallaryReply> gallaryReply = new ArrayList<>();
+```
+
+당연히데이터 입력 후 추가적으로 PK를 입력하여 JOIN 처리를 해주어야 한다.
+
+```java
+  public void setGallary(Gallary gallary){
+        this.gallary=gallary;
+
+        if(!gallary.getGallaryReply().contains(this)){
+            gallary.getGallaryReply().add(this);
+        }
+    }
+```
+
+![3](https://user-images.githubusercontent.com/65659478/149054013-8021c9a2-61eb-4e1d-979c-14d60b84c660.png)
+
+#### 댓글 닉네임과 Comment 호출
+댓글이라면 익명 댓글 보다는 닉네임 댓글을 사용하는 것이 모두를 위해 좋다고 생각했다.
+
+이전에 매핑시켜놓은 테이블중 `Reply테이블`에서 `Account` 컬럼에 pk를 입력시켜주고 타입리프를 통해 호출해 주면 될것이다.
+
+#### * 추가
+각 테이블에 속해 있는 댓글을 출력하기 위해 아래와 같이 `gallary.getGallaryReply()`로 수정한다.
+```java
+
+    // 게시판 상세 내용 출력
+    @GetMapping("/gallary/view/{id}")
+    private String find(@PathVariable("id") Long index, Model model) {
+        Gallary gallary = gallaryService.findIndex(index).orElseThrow(()
+                -> new IllegalArgumentException("error"));
+        
+
+        model.addAttribute("details", gallary);
+        
+        
+        * model.addAttribute("replys", gallary.getGallaryReply());
+
+        return "home/gallary/gallarydetail";
+    }
+    
+```
+
+
+#### FE 페이지 구성
+
+`Contents`와 `댓글`을 사용자가 쉽게 볼 수 있도록 오른편에 구성하여 페이지의 허전함을 개선하였다.
+그러나 댓글의 `닉네임`을 노출시기는 것이 좋다 생각했다.
+![제목 없음](https://user-images.githubusercontent.com/65659478/148678245-dbdb6802-ae00-40e5-b74e-927949005e08.png)
+
+#### -> 댓글 닉네임 개선 후
+![2](https://user-images.githubusercontent.com/65659478/149053650-de567e42-ec7d-4f1c-bad0-f0c27c7dbdf5.png)
+
+
+
+### 🥳 MAIN 페이지 구현 🥳
+
+#### VER.1 메인 페이지
+![main](https://user-images.githubusercontent.com/65659478/149650552-d1e7f3e1-8ddf-4c00-b0c5-7f03e6b4ed0d.png)
+
+몇개의 아이콘으로만 구현했으며 기능은 따로 없으며 디자인적으로 해당 페이지의 역할이나 테마를 알수가 없다.
+
+
+#### VER.2 메인 페이지
+
+페이지의 테마 그리고 현재 유튜브 영상 업로드 상황을 알리기 위해 `동적 베너`를 제작하여 구성한다
+
+공식 `YouTube API`를 사용하여 나의 채널에서 영상의 정보를 크롤링하여 DB에 저장 후 사용하였다.
+이미지 또한 별도의 저장없이 유튜브에서 저장되어있는 `데이터 링크`를 주소로 사용하여 비용절감까지 가능하였다.
+(아래 코드의 `*`를 확인하면 이해가 쉽다.)
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/65659478/150127762-368d5b2e-b905-4ce6-9d35-808e3ddb2b15.gif)
+
+
+```html
+   <div id="wrapper">
+        <div id="slider-wrap">
+            <ul id="slider">
+                <li th:each="youtube: ${youtubes}">
+                    <div>
+                        <h5 th:text="${youtube.Title}">Slide #1</h5>
+                    </div>
+                   * <a th:href="@{https://youtu.be/{link} (link=${youtube.VideoId}) }">
+                   * <img th:src="@{https://i.ytimg.com/vi/{Id}/hqdefault.jpg (Id=${youtube.VideoId}) }">
+                    </a>
+                </li>
+
+
+            </ul>
+
+            <!--controls-->
+            <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
+            <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+            <div id="counter"></div>
+
+            <div id="pagination-wrap">
+                <ul>
+                </ul>
+            </div>
+            <!--controls-->
+        </div>
+    </div>
+```
+
+
+---
 ### 🐹 TODO LIST !!! 🐹
 
-#### 1. CRUD api 기능 구현 🙆
-#### 2. 타임리프 적용 html 생성 🙆
-#### 3. 로그인 기능 구현 (등급 별로 사용자 권한) 🙆
-#### 4. 게시판 기능 추가 (연결해야해요!!!) 🙆
-#### 5. 검색기능 수정 / user 접속기능 개선
-#### 5. html을 꾸며야 해요 (Admin / 게임신청 / 게임리스트) 개별 🙆
-#### 6. 게임 상세 페이지 완성 시켜야 해요 🙆
-#### 7. 관리자 페이지 구성 🙆
-#### 8. 구글 에드센스 광고 게제 🙆
-#### 10. reviewdetail 수정 페이지 제작 🙆
-#### 12. 검색 기능 수정 🙆
+#### 1. 댓글기능 구현 🙆
+#### 2. YOUTUBE API 섬네일 및 영상 링크 배너 구현 🙆
 
 
 ### DeBug list
-#### 9. 페이지 글자수 카운트 추가
-#### 11. 리뷰 작성 후 페이지 이동 에러
-#### 권한 삭제 추가
-[권한삭제 링크](https://velog.io/@business160308/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-Part7-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0-%EC%A0%91%EB%AA%A9)
 
 
 ---
@@ -79,5 +191,10 @@ Local_address : http://localhost:8081
 
 Deploy_address : www.cutlinepage.ml:8081
 
-### Git Blog: https://kim-js-95.github.io/2021/11/24/portfolio-3.html
+---
+
+### 🛠 update Log 🛠 
+[README_ver.1.markdown](./DevLog/README_ver.1.markdown)
+### 🛠 Git Blog 🛠
+https://kim-js-95.github.io/2021/11/24/portfolio-3.html
 

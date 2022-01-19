@@ -25,10 +25,12 @@ import java.util.List;
  * @author Jeremy Walker
  */
 
-//TODO : admin  페이지에서 버튼 클릭하면 DB 초기화 방식
+
 @RestController
 public class MyUploads {
 
+    @Autowired
+    YoutubeTableRepository youtubeTableRepository;
 
     /**
      * Define a global instance of a Youtube object, which will be used
@@ -98,14 +100,14 @@ public class MyUploads {
                 // Call the API one or more times to retrieve all items in the
                 // list. As long as the API response returns a nextPageToken,
                 // there are still more items to retrieve.
-                int cnt=0;
+                int cnt = 0;
                 do {
                     playlistItemRequest.setPageToken(nextToken);
                     PlaylistItemListResponse playlistItemResult = playlistItemRequest.execute();
 
                     playlistItemList.addAll(playlistItemResult.getItems());
                     nextToken = playlistItemResult.getNextPageToken();
-                } while (playlistItemList.size()<=3);
+                } while (playlistItemList.size() <= 3);
 
                 // Prints information about the results.
                 prettyPrint(playlistItemList.size(), playlistItemList.iterator());
@@ -132,28 +134,19 @@ public class MyUploads {
      */
 
 
-    @Autowired
-     YoutubeTableRepository youtubeTableRepository;
-
     static List<YoutubeTable> list = new ArrayList<>();
-    private  void prettyPrint(int size, Iterator<PlaylistItem> playlistEntries) {
-        System.out.println("=============================================================");
-        System.out.println("\t\tTotal Videos Uploaded: " + size);
-        System.out.println("=============================================================\n");
+
+    private void prettyPrint(int size, Iterator<PlaylistItem> playlistEntries) {
 
         while (playlistEntries.hasNext()) {
             PlaylistItem playlistItem = playlistEntries.next();
 
-            YoutubeTable youtubeTable= YoutubeTable.builder()
+            YoutubeTable youtubeTable = YoutubeTable.builder()
                     .VideoId(playlistItem.getContentDetails().getVideoId())
                     .Title(playlistItem.getSnippet().getTitle())
                     .build();
 
             list.add(youtubeTable);
-//            System.out.println(" video name  = " + playlistItem.getSnippet().getTitle());
-//            System.out.println(" video id    = " + playlistItem.getContentDetails().getVideoId());
-//            System.out.println(" upload date = " + playlistItem.getSnippet().getPublishedAt());
-//            System.out.println("\n-------------------------------------------------------------\n");
         }
         youtubeTableRepository.saveAll(list);
 

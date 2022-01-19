@@ -106,8 +106,8 @@ public class MemberController {
     private YouTubeService youTubeService;
     @GetMapping("/")
     public String home(Model model) {
-        Account account=Getuser();
-        nick(model,account.getUsername());
+
+        nick(model,Getuser());
 
         List<YoutubeTable> YouTubeList= youTubeService.getVideoInfo();
 
@@ -122,10 +122,9 @@ public class MemberController {
     public String userHome(Model model) {
 
         // TODO: 현재 유저의 정보 가져오기
-        Account account=Getuser();
 
         // TODO: 유저 이름 side.html으로 보내기
-        nick(model,account.getUsername());
+        nick(model,Getuser());
 
         return "home/user";
     }
@@ -138,10 +137,10 @@ public class MemberController {
         Integer[] pagelist = gallaryService.getPageList(pageNum);
 
         // TODO: 현재 유저의 정보 가져오기
-        Account account=Getuser();
+        String account=Getuser();
         if(account != null){
             // TODO: 유저 이름 side.html으로 보내기
-            nick(model,account.getUsername());
+            nick(model,account);
         }
 
         model.addAttribute("boardList", gallaryDtos);
@@ -150,16 +149,19 @@ public class MemberController {
         return "home/guest";
     }
 
-    public Account Getuser(){
+    public String Getuser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Account account = null;
+        String account = "";
 
         try {
-            account = userService.getUserByUsername(auth.getName());
+            account = userService.getUserByUsername(auth.getName()).getUsername();
         } catch (Exception e) {
             log.error("[CutLine]" + e.getMessage());
         }
 
+        if(account == ""){
+           return "Guest";
+        }
         return account;
     }
 
