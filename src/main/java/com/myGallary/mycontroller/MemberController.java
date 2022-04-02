@@ -148,7 +148,6 @@ public class MemberController {
 
         return "home/guest";
     }
-
     public String Getuser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String account = "";

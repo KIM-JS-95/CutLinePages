@@ -4,10 +4,12 @@ package com.myGallary.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Parent;
 import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,12 +48,14 @@ public class Account {
 
     @Column(nullable = false)
     @NotBlank
-    @Email
+    @Email(message = "이메일의 양식과 맞지 않습니다.")
     private String email;
 
     @Column(nullable = false)
     private Boolean isActive;
 
+    @Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}$", message = "핸드폰 번호의 양식과 맞지 않습니다.")
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<Gallary> gallaries = new ArrayList<>();

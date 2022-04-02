@@ -42,7 +42,7 @@ public class GallaryController {
     @GetMapping("/gallary/update/{id}")
     public String modify(Model model, @PathVariable("id") Long index) {
         Gallary gallary = gallaryService.findIndex(index).orElseThrow(()
-                -> new IllegalArgumentException("error"));
+                -> new IllegalArgumentException("/error"));
 
         model.addAttribute("details", gallary);
         return "home/gallary/modipage";
@@ -53,7 +53,7 @@ public class GallaryController {
     @GetMapping("/gallary/view/{id}")
     private String find(@PathVariable("id") Long index, Model model) {
         Gallary gallary = gallaryService.findIndex(index).orElseThrow(()
-                -> new IllegalArgumentException("error"));
+                -> new IllegalArgumentException("/error"));
 
 
         model.addAttribute("details", gallary);
