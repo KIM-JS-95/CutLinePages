@@ -3,3 +3,5 @@
 src/main/resources/application.properties
 src/main/resources/level.properties
 src/main/resources/client_secrets.json
+build/
+gradle/

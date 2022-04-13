@@ -1,46 +1,59 @@
-$('#save').on('click', function () {
-    var data={
-             title: $('#title').val(),
-             content: $('#content').val(),
-             link: $('#link').val()
-         };
+////////
 
-     $.ajax({
-         type: 'POST',
-         url: '/gallary/create',
-         contentType:'application/json; charset=utf-8',
-         data: JSON.stringify(data)
-     }).done(function(){
-      alert('저장 성공');
-      window.location.href='/home/guest'
-     }).fail(function (error) {
-     alert(JSON.stringify(error));
-     });
- });
+const save = document.getElementById("save");
+save.addEventListener("click",save_func);
 
+function save_func() {
 
-// 페이지 생성
-$('#delete').on('click', function() {
-if(confirm("삭제하시겠습니까?")==true){
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value; 
+    const link = document.getElementById("link").value; 
 
- var id = document.getElementById("id1").innerText;
+   var data={
+       title: title,
+       content: content,
+       link: link
+   };
 
-              $.ajax({
-               type: 'DELETE',
-               url: '/gallary/delete/'+id ,
-               contentType:'application/json; charset=utf-8',
-           }).done(function(){
-           alert('글이 삭제되었습니다.');
-            window.location.href='/home/guest'
-           }).fail(function (error) {
-           alert(JSON.stringify(error));
-     });
+   fetch("/gallary/create", {
+       method: "POST", // POST
+       headers: { // 헤더 조작
+        "Content-Type": "application/json;",
+       },
+       body: JSON.stringify(data),
+   })
+       .then(alert('저장 성공'))
+       .then(window.location.href='/home/guest')
+       .catch((data) => console.log(data))
 }
-});
 
 
+////////
 
-// 페이지 이동
+const dele = document.getElementById("delete");
+dele.addEventListener("click", delete_function);
+
+
+function delete_function(){
+    if(confirm("삭제하시겠습니까?")==true){
+        var id = document.getElementById("id1").innerText;
+
+        fetch('/gallary/delete/'+id, {
+            method: DELETE,
+            headers: {
+                "Content-Type": "application/json;"
+            }
+        })
+        .then(alert('글이 삭제되었습니다.'))
+        .then(window.location.href='/home/guest')
+    }
+};
+
+
+////////
+
+const modipage = document.getElementById("");
+
 $('#modipage').on('click', function(){
 
 if(confirm("수정하시겠습니까?")==true){

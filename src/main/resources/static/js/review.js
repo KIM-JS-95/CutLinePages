@@ -1,13 +1,11 @@
 
 // 리뷰 저장
 $('#save').on('click', function () {
-
     var data={
              title: $('#title').val(),
              content: $('#content').val(),
              link: $('#link').val()
          };
-
      $.ajax({
          type: 'POST',
          url: '/adminpages/create',
@@ -21,6 +19,8 @@ $('#save').on('click', function () {
      alert(JSON.stringify(error));
      });
  });
+
+
 
 
 // 리뷰 삭제

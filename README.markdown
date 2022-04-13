@@ -187,6 +187,8 @@
 
 기본 브렌치  =  master
 
+FE 브렌치 = main
+BE 브렌치 = dev
 Local_address : http://localhost:8081
 
 Deploy_address : www.cutlinepage.ml:8081
@@ -195,6 +197,7 @@ Deploy_address : www.cutlinepage.ml:8081
 
 ### 🛠 update Log 🛠 
 [README_ver.1.markdown](./DevLog/README_ver.1.markdown)
+
 ### 🛠 Git Blog 🛠
 https://kim-js-95.github.io/2021/11/24/portfolio-3.html
 

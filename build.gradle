@@ -20,9 +20,6 @@ group 'com.myGallary'
 version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'

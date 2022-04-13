@@ -104,15 +104,12 @@ public class MemberController {
 
     @Autowired
     private YouTubeService youTubeService;
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home(Model model) {
 
         nick(model,Getuser());
-
         List<YoutubeTable> YouTubeList= youTubeService.getVideoInfo();
-
         model.addAttribute("youtubes", YouTubeList);
-         System.out.println(YouTubeList.size());
         return "index";
     }
 
