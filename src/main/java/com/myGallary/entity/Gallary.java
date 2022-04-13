@@ -33,6 +33,11 @@ public class Gallary extends TimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+<<<<<<< HEAD
+    @NotBlank
+    private String username;
+
+=======
     @NotNull
     private String link;
 
@@ -50,4 +55,5 @@ public class Gallary extends TimeEntity {
             account.getGallaries().add(this);
         }
     }
+>>>>>>> dev
 }
